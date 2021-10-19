@@ -3,8 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Ressources\BulletinController;
-use App\Http\Controllers\Ressources\MatiereController;
-
+use App\Http\Middleware\bulletinMiddleware;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,8 +22,9 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/logout', [HomeController::class, 'logout'])->name('logout');
+Route::get('/bulletin/{id}', [BulletinController::class, 'show'])->name('showbulletin');
 
 Route::resource('/home/bulletin', BulletinController::class);
+Route::get('/bulletin/{id}', [BulletinController::class, 'show'])->middleware(BulletinMiddleware::class);
 
-Route::resource('/home/matiere', MatiereController::class);
 

@@ -36,4 +36,5 @@ class HomeController extends Controller
         $request->session()->flush();
         return  redirect('/login');
     }
+    
 }

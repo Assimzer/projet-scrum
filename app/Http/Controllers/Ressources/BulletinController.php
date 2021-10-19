@@ -17,7 +17,7 @@ class BulletinController extends Controller
     {
         $bulletins = bulletin::all()->where('user_id', '=', Auth::User()->id);
         $bulletinCount = bulletin::where('user_id', '=', Auth::User()->id)->count();
-        return view('bulletin',compact('bulletins','bulletinCount'));
+        return view('bulletin',compact('bulletins'));
     }
 
     /**
@@ -49,7 +49,8 @@ class BulletinController extends Controller
      */
     public function show($id)
     {
-        //
+        $bulletins = bulletin::find($id);
+        return view('showbulletin',compact('bulletins'));
     }
 
     /**

@@ -21,6 +21,6 @@ class bulletin extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class, 'users_id');
+        return $this->hasOne(User::class, 'user_id');
     }
 }
