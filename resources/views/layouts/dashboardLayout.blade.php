@@ -11,56 +11,111 @@
     </head>
     <body>
         <div class="container">
-            <div class="navigation">
-                <ul>
-                    <li>
-                        <a href="#">
-                            <span class="icon"><ion-icon name="school-outline"></ion-icon></span>
-                            <span class="title">Apprenti Recrutor 2000</span>
-                        </a>
-                    </li>
-                    @if(Route::is('home') )
-                    <li class="hovered">
-                        <a href="#">
-                            <span class="icon"><ion-icon name="home-outline"></ion-icon></ion-icon></span>
-                            <span class="title">Dashboard</span>
-                        </a>
-                    </li>
-                    @else
-                    <li>
-                        <a href="#">
-                            <span class="icon"><ion-icon name="home-outline"></ion-icon></ion-icon></span>
-                            <span class="title">Dashboard</span>
-                        </a>
-                    </li>
-                    @endif
-                    <li>
-                        <a href="{{route('bulletin.index')}}">
-                            <span class="icon"><ion-icon name="newspaper-outline"></ion-icon></span>
-                            <span class="title">Bulletins</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span class="icon"><ion-icon name="book-outline"></ion-icon></span>
-                            <span class="title">Offres</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span class="icon"><ion-icon name="settings-outline"></ion-icon></span>
-                            <span class="title">Paramètres</span>
-                        </a>
-                    </li>
+            @if(Auth::user()->roles->profileType == "Admin")
+                <div class="navigation">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <span class="icon"><ion-icon name="school-outline"></ion-icon></span>
+                                <span class="title">Apprenti Recrutor 2000</span>
+                            </a>
+                        </li>
+                        @if(Route::is('home') )
+                        <li class="hovered">
+                            <a href="#">
+                                <span class="icon"><ion-icon name="home-outline"></ion-icon></ion-icon></span>
+                                <span class="title">Dashboard</span>
+                            </a>
+                        </li>
+                        @else
+                        <li>
+                            <a href="#">
+                                <span class="icon"><ion-icon name="home-outline"></ion-icon></ion-icon></span>
+                                <span class="title">Dashboard</span>
+                            </a>
+                        </li>
+                        @endif
+                        <li>
+                            <a href="{{route('bulletin.index')}}">
+                                <span class="icon"><ion-icon name="newspaper-outline"></ion-icon></span>
+                                <span class="title">Add bulletin</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="icon"><ion-icon name="book-outline"></ion-icon></span>
+                                <span class="title">CRUD Matiere</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="icon"><ion-icon name="settings-outline"></ion-icon></span>
+                                <span class="title">Paramètres</span>
+                            </a>
+                        </li>
 
-                    <li>
-                        <a href="{{route('logout')}}">
-                            <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
-                            <span class="title">Deconnexion</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+                        <li>
+                            <a href="{{route('logout')}}">
+                                <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
+                                <span class="title">Deconnexion</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            @endif
+
+            @if(Auth::user()->roles->profileType == "Eleve")
+                <div class="navigation">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <span class="icon"><ion-icon name="school-outline"></ion-icon></span>
+                                <span class="title">Apprenti Recrutor 2000</span>
+                            </a>
+                        </li>
+                        @if(Route::is('home') )
+                        <li class="hovered">
+                            <a href="#">
+                                <span class="icon"><ion-icon name="home-outline"></ion-icon></ion-icon></span>
+                                <span class="title">Dashboard</span>
+                            </a>
+                        </li>
+                        @else
+                        <li>
+                            <a href="#">
+                                <span class="icon"><ion-icon name="home-outline"></ion-icon></ion-icon></span>
+                                <span class="title">Dashboard</span>
+                            </a>
+                        </li>
+                        @endif
+                        <li>
+                            <a href="{{route('bulletin.index')}}">
+                                <span class="icon"><ion-icon name="newspaper-outline"></ion-icon></span>
+                                <span class="title">Bulletins</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="icon"><ion-icon name="book-outline"></ion-icon></span>
+                                <span class="title">Offres</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="icon"><ion-icon name="settings-outline"></ion-icon></span>
+                                <span class="title">Paramètres</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{route('logout')}}">
+                                <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
+                                <span class="title">Deconnexion</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            @endif
 
             <!-- main -->
             <div class="main">

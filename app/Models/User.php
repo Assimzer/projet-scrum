@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Notification;
 use App\Models\bulletin;
+use App\Models\roles;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -52,5 +53,10 @@ class User extends Authenticatable
     public function bulletins()
     {
         return $this->hasMany(bulletin::class, 'bulletin_id');
+    }
+
+    public function roles()
+    {
+        return $this->belongsTo(roles::class, 'role_id');
     }
 }

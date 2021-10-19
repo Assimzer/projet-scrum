@@ -8,6 +8,13 @@ use App\Models\bulletin;
 use Auth;
 class BulletinController extends Controller
 {
+
+    public function __construct()
+    {
+        //permet utiliser toute les autres fonction uniquement si on est admin
+        //si pas admin on peut apeller index et show
+        $this->middleware('RoleMiddleware')->except(['index','show']);
+    }
     /**
      * Display a listing of the resource.
      *
