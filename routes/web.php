@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Ressources\BulletinController;
+use App\Http\Controllers\Ressources\MatiereController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,4 +25,6 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/logout', [HomeController::class, 'logout'])->name('logout');
 
 Route::resource('/home/bulletin', BulletinController::class);
+
+Route::resource('/home/matiere', MatiereController::class);
 

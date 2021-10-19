@@ -29,6 +29,20 @@ class BulletinSeeder extends Seeder
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
+        DB::table('bulletin')->insert([
+            'nomBulletin'           => 'Première année',
+            'appreciation'           => 'cool',
+            'user_id'          => 3,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+        DB::table('bulletin')->insert([
+            'nomBulletin'           => 'Première année',
+            'appreciation'           => 'cool',
+            'user_id'          => 4,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
 
     }
 }
