@@ -88,7 +88,7 @@
                     </div>
                     <div class="card">
                         <div>
-                            <div class="numbers">{{$bulletinCount}}</div>
+                            <div class="numbers">1</div>
                             <div class="cardName">Bulletins</div>
                         </div>
                         <div class="iconBx">
