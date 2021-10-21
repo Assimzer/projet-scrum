@@ -36,17 +36,21 @@
                         </li>
                         @endif
                         <li>
-                            <a href="{{route('bulletin.index')}}">
+                            <a href="{{route('showbulletinAdmin')}}">
                                 <span class="icon"><ion-icon name="newspaper-outline"></ion-icon></span>
-                                <span class="title">Add bulletin</span>
+                                <span class="title">Bulletin</span>
                             </a>
                         </li>
+
+
                         <li>
                             <a href="#">
                                 <span class="icon"><ion-icon name="book-outline"></ion-icon></span>
                                 <span class="title">CRUD Matiere</span>
                             </a>
                         </li>
+
+                        
                         <li>
                             <a href="#">
                                 <span class="icon"><ion-icon name="settings-outline"></ion-icon></span>
@@ -68,44 +72,78 @@
                 <div class="navigation">
                     <ul>
                         <li>
-                            <a href="#">
+                            <a href="{{route('home')}}">
                                 <span class="icon"><ion-icon name="school-outline"></ion-icon></span>
                                 <span class="title">Apprenti Recrutor 2000</span>
                             </a>
                         </li>
                         @if(Route::is('home') )
                         <li class="hovered">
-                            <a href="#">
+                            <a href="{{route('home')}}">
                                 <span class="icon"><ion-icon name="home-outline"></ion-icon></ion-icon></span>
                                 <span class="title">Dashboard</span>
                             </a>
                         </li>
                         @else
                         <li>
-                            <a href="#">
+                            <a href="{{route('home')}}">
                                 <span class="icon"><ion-icon name="home-outline"></ion-icon></ion-icon></span>
                                 <span class="title">Dashboard</span>
                             </a>
                         </li>
                         @endif
+
+
+                        @if(Route::is('bulletin.index') )
+                        <li class="hovered">
+                            <a href="{{route('bulletin.index')}}">
+                                <span class="icon"><ion-icon name="newspaper-outline"></ion-icon></span>
+                                <span class="title">Bulletins</span>
+                            </a>
+                        </li>
+                        @else
                         <li>
                             <a href="{{route('bulletin.index')}}">
                                 <span class="icon"><ion-icon name="newspaper-outline"></ion-icon></span>
                                 <span class="title">Bulletins</span>
                             </a>
                         </li>
-                        <li>
-                            <a href="#">
+                        @endif
+                        
+
+                        @if(Route::is('offre.index') )
+                        <li class="hovered">
+                            <a href="{{route('offre.index')}}">
                                 <span class="icon"><ion-icon name="book-outline"></ion-icon></span>
                                 <span class="title">Offres</span>
                             </a>
                         </li>
+                        @else
                         <li>
-                            <a href="#">
+                            <a href="{{route('offre.index')}}">
+                                <span class="icon"><ion-icon name="book-outline"></ion-icon></span>
+                                <span class="title">Offres</span>
+                            </a>
+                        </li>
+                        @endif
+                        
+
+                        @if(Route::is('settings') )
+                        <li class="hovered">
+                            <a href="{{route('settings')}}">
                                 <span class="icon"><ion-icon name="settings-outline"></ion-icon></span>
                                 <span class="title">Paramètres</span>
                             </a>
                         </li>
+                        @else
+                        <li>
+                            <a href="{{route('settings')}}">
+                                <span class="icon"><ion-icon name="settings-outline"></ion-icon></span>
+                                <span class="title">Paramètres</span>
+                            </a>
+                        </li>
+                        @endif
+                        
 
                         <li>
                             <a href="{{route('logout')}}">

@@ -4,17 +4,9 @@ namespace App\Http\Controllers\Ressources;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\bulletin;
-use Auth;
-class BulletinController extends Controller
+use App\Models\offre;
+class OffreController extends Controller
 {
-
-    public function __construct()
-    {
-        //permet utiliser toute les autres fonction uniquement si on est admin
-        //si pas admin on peut apeller index et show
-        #$this->middleware('RoleMiddleware')->except(['index','show']);
-    }
     /**
      * Display a listing of the resource.
      *
@@ -22,17 +14,10 @@ class BulletinController extends Controller
      */
     public function index()
     {
-        $bulletins = bulletin::all()->where('user_id', '=', Auth::User()->id);
-        $bulletinCount = bulletin::where('user_id', '=', Auth::User()->id)->count();
-        $bulletinsAll = bulletin::all();
-        return view('bulletin',compact('bulletins','bulletinCount','bulletinsAll'));
+        $offreASI = offre::all();
+        return view('offre.index',compact('offreASI'));
     }
-    
-    public function IndexAdmin()
-    {
-        $bulletinsAll = bulletin::all();
-        return view('bulletins.index',compact('bulletinsAll'));
-    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -62,8 +47,7 @@ class BulletinController extends Controller
      */
     public function show($id)
     {
-        #$bulletins = bulletin::find($id);
-        #return view('showbulletin',compact('bulletins'));
+        //
     }
 
     /**
