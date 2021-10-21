@@ -43,4 +43,6 @@
         </tr>
     @endforeach
 </table>
+<button type="button" class="btn btn-primary">Primary</button>
+<p>kzhjrebfouzeh</p>
 @endsection

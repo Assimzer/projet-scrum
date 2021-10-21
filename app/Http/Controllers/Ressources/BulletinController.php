@@ -44,7 +44,7 @@ class BulletinController extends Controller
      */
     public function create()
     {
-        //
+        return view('bulletins.create');
     }
 
     /**
