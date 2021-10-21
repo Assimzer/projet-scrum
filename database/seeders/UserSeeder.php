@@ -54,5 +54,14 @@ class UserSeeder extends Seeder
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
+        DB::table('users')->insert([
+            'name'           => 'Admin',
+            'fristname'           => 'localhost',
+            'email'          => 'admin@gmail.com',
+            'role_id'          => 1,
+            'password'      => Hash::make('Azerty*1'),
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
     }
 }
