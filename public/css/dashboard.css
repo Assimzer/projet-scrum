@@ -24,7 +24,7 @@ body
 
 
 .nameColored{
-    color: var(--primary);
+    color: var(--white);
 }
 .Cooper{
     font-family: 'Cooper Black', sans-serif;
@@ -182,7 +182,7 @@ body
     left: 80px;
 }
 
-.topbar
+.topbar 
 {
     width: 100%;
     height: 60px;
@@ -192,7 +192,61 @@ body
     padding: 0 10px;
     background-color: #287bff;
 }
+.topbarfull .inverted-border-radius 
+{
+    position: absolute;
+    top: 38px;
+    left: 0px;
+   
 
+}
+.inverted-border-radius {
+    position: relative;
+    height: 18px;
+    width: 43px;
+    background-color: #287bff;
+    border-radius: 25px 25px 25px 0;
+  }
+  
+  .inverted-border-radius::before 
+  {
+    content: "";
+    position: absolute;
+    
+    background-color: transparent;
+    bottom: -50px;
+    height: 47px;
+    width: 43px;
+    border-top-left-radius: 25px;
+    box-shadow: 0 -25px 0 0 #287bff;
+  }
+
+
+.inverted-border-right {
+  position: relative;
+  
+  background-color: #287bff;
+  border-radius: 25px 25px 25px 0;
+}
+
+.inverted-border-right::before {
+    content: "";
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background-color: transparent;
+    bottom: -50px;
+    height: 50px;
+    width: 41px;
+    border-top-right-radius: 25px;
+    box-shadow: 0 -25px 0 0 #287bff;
+}
+.topbarfullright .inverted-border-right
+{
+    position: absolute;
+    top: 50px;
+    right: -10px;
+}
 .toggle
 {
     position: relative;

@@ -155,9 +155,65 @@
                 </div>
             @endif
 
+            <div class="navigation">
+                <ul>
+                    <li class="border">
+                        <a href="#">
+                            <span class="icon"><ion-icon name="school-outline"></ion-icon></span>
+                            <span class="title">Apprenti Recrutor 2000</span>
+                        </a>
+                    </li>
+                    @if(Route::is('home') )
+                    <li class="hovered">
+                        <a href="#">
+                            <span class="icon"><ion-icon name="home-outline"></ion-icon></ion-icon></span>
+                            <span class="title">Dashboard</span>
+                        </a>
+                    </li>
+                    @else
+                    <li>
+                        <a href="#">
+                            <span class="icon"><ion-icon name="home-outline"></ion-icon></ion-icon></span>
+                            <span class="title">Dashboard</span>
+                        </a>
+                    </li>
+                    @endif
+                    <li>
+                        <a href="{{route('bulletin.index')}}">
+                            <span class="icon"><ion-icon name="newspaper-outline"></ion-icon></span>
+                            <span class="title">Bulletins</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="icon"><ion-icon name="book-outline"></ion-icon></span>
+                            <span class="title">Offres</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="icon"><ion-icon name="settings-outline"></ion-icon></span>
+                            <span class="title">Paramètres</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{route('logout')}}">
+                            <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
+                            <span class="title">Deconnexion</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+
             <!-- main -->
             <div class="main">
+                <div class="topbarfull">
+                <div class="topbarfullright">     
                 <div class="topbar">
+                <div class="inverted-border-radius"></div> 
+                <div class="inverted-border-right"></div>                 
                     <div class="toggle">
                         <ion-icon name="menu-outline"></ion-icon>
                     </div>
@@ -166,6 +222,8 @@
                     <div class="user">
                         <img src="{{ Gravatar::src(Auth::user()->email) }}">
                     </div>
+                </div>
+                </div>
                 </div>
 
                 <!-- cards -->

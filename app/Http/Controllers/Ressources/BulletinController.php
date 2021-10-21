@@ -24,6 +24,7 @@ class BulletinController extends Controller
     {
         $bulletins = bulletin::all()->where('user_id', '=', Auth::User()->id);
         $bulletinCount = bulletin::where('user_id', '=', Auth::User()->id)->count();
+        
         $bulletinsAll = bulletin::all();
         return view('bulletin',compact('bulletins','bulletinCount','bulletinsAll'));
     }
@@ -32,6 +33,9 @@ class BulletinController extends Controller
     {
         $bulletinsAll = bulletin::all();
         return view('bulletins.index',compact('bulletinsAll'));
+
+        return view('bulletin',compact('bulletins','bulletinCount'));
+
     }
     /**
      * Show the form for creating a new resource.
