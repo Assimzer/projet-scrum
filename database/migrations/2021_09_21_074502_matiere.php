@@ -13,7 +13,7 @@ class Matiere extends Migration
      */
     public function up()
     {
-        Schema::create('matiere', function(Blueprint $table){
+        Schema::create('matieres', function(Blueprint $table){
             $table->increments('id');
             $table->string('nomMatiere');
             $table->integer('sousCoefficient');

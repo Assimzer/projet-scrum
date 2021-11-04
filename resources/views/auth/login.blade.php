@@ -1,96 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="{{ url('img/core-img/fav2.ico') }}">
-    <meta http-equiv="cache-control" content="max-age=0" />
-    <meta http-equiv="cache-control" content="no-cache" />
-    <meta http-equiv="expires" content="0" />
-    <meta http-equiv="pragma" content="no-cache" />
-    <link rel="icon" href="{{ url('img/school.ico') }}">
-    <script
-      src="https://kit.fontawesome.com/64d58efce2.js"
-      crossorigin="anonymous"
-    ></script>
-    <link rel="stylesheet" href="{{url('css/LoginRegister.css')}}" />
-    <title>ProjetApprentisRecrutor2000 Login</title>
+    <title>ApprentisRecrutor2000</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--===============================================================================================-->	
+    <link rel="icon" type="image/png" href="{{url('images/icons/graduation.ico')}}"/>
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{url('vendor/bootstrap/css/bootstrap.min.css')}}">
+  <!--===============================================================================================-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{url('vendor/animate/animate.css')}}">
+  <!--===============================================================================================-->	
+    <link rel="stylesheet" type="text/css" href="{{url('vendor/css-hamburgers/hamburgers.min.css')}}">
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{url('vendor/select2/select2.min.css')}}">
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{url('css/util.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url('css/main.css')}}">
+  <!--===============================================================================================-->
   </head>
   <body>
-    <div class="container">
-      <div class="forms-container">
-        <div class="signin-signup">
-          <form method="POST" action="{{ route('login') }}" class="sign-in-form">
-            @csrf
-            <h2 class="title">Bienvenue</h2>
-            <div class="input-field">
-              <i class="fas fa-at"></i>
-              <input type="email" placeholder="email" name="email"/>
-            </div>
-            <div class="input-field">
-              <i class="fas fa-lock"></i>
-              <input id="password" type="password" placeholder="Mot De Passe" name="password"/>
-            </div>
-            <input type="submit" value="Connexion" class="btn solid" />
-            @if ($errors->has('password'))
-                <span class="invalid-feedback">
-                    <strong>{{ $errors->first('password') }}</strong>
-                </span>
-            @endif
-            @if ($errors->has('email'))
-                <span class="invalid-feedback">
-                    <strong>{{ $errors->first('email') }}</strong>
-                </span>
-            @endif
-          </form>
-          <form action="{{route('register')}}" class="sign-up-form">
-            @csrf
-            <h2 class="title">Inscription</h2>
-            <div class="input-field">
-              <i class="fas fa-at"></i>
-              <input type="email" placeholder="email" id="email"/>
-            </div>
-            <div class="input-field">
-              <i class="fas fa-envelope"></i>
-              <input type="email" placeholder="Email" />
-            </div>
-            <div class="input-field">
-              <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Password" />
-            </div>
-            <input type="submit" class="btn" value="Valider" />
-          </form>
-        </div>
-      </div>
-
-      <div class="panels-container">
-        <div class="panel left-panel">
-          <div class="content">
-            <h3 class="loginCorrection">Nouveau ?</h3>
-            <p class="loginCorrection">
-              Vous n'avez pas encore de compt sur <strong>ProjetApprentisRecrutor2000</strong> pas de soucis cliqué sur le button ci-dessous !
-            </p>
-            <button class="btn transparent" id="sign-up-btn">
-            Inscription
-            </button>
+    
+    <div class="limiter">
+      <div class="container-login100">
+        <div class="wrap-login100">
+          <div class="login100-pic js-tilt" data-tilt>
+            <img src="images/logo_ecole.png" alt="IMG" style="width: 90%;">
           </div>
-          <img src="{{url('img/aventure.svg')}}" class="image" alt="" />
-        </div>
-        <div class="panel right-panel">
-          <div class="content">
-            <h3>Vous Avez Déja Un Compte ?</h3>
-            <p>
 
-            </p>
-            <button class="btn transparent" id="sign-in-btn">
-              Connexion
-            </button>
-          </div>
-          <img src="{{url('img/register.svg')}}" class="image" alt="" />
+          <form method="POST" action="{{ route('login') }}" class="login100-form validate-form">
+          @csrf
+            <span class="login100-form-title">
+              Bienvenue
+            </span>
+              <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                <input class="input100" type="text" id="email" name="email" placeholder="Email">
+                <span class="focus-input100"></span>
+                <span class="symbol-input100">
+                  <i class="fa fa-envelope" aria-hidden="true"></i>
+                </span>
+              </div>
+
+              <div class="wrap-input100 validate-input" data-validate = "Password is required">
+                <input class="input100" type="password" id="password" name="password" placeholder="Password">
+                <span class="focus-input100"></span>
+                <span class="symbol-input100">
+                  <i class="fa fa-lock" aria-hidden="true"></i>
+                </span>
+              </div>
+
+              <div class="container-login100-form-btn">
+                <input type="submit" class="login100-form-btn" value="Valider" />
+              </div>
+            
+
+            <div class="text-center p-t-12">
+              <span class="txt1">
+                Forgot
+              </span>
+              <a class="txt2" href="#">
+                Username / Password?
+              </a>
+            </div>
+
+            <div class="text-center p-t-136">
+              <a class="txt2" href="#">
+                Create your Account
+                <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+              </a>
+            </div>
+          </form>
         </div>
       </div>
     </div>
+    
+    
 
-    <script src="{{url("js/Login.js")}}"></script>
+    
+  <!--===============================================================================================-->	
+    <script src="{{url('vendor/jquery/jquery-3.2.1.min.js')}}"></script>
+  <!--===============================================================================================-->
+    <script src="{{url('vendor/bootstrap/js/popper.js')}}"></script>
+    <script src="{{url('vendor/bootstrap/js/bootstrap.min.js')}}"></script>
+  <!--===============================================================================================-->
+    <script src="{{url('vendor/select2/select2.min.js')}}"></script>
+  <!--===============================================================================================-->
+    <script src="{{url('vendor/tilt/tilt.jquery.min.js')}}"></script>
+    <script >
+      $('.js-tilt').tilt({
+        scale: 1.1
+      })
+    </script>
+  <!--===============================================================================================-->
+    <script src="{{url('js/main.js')}}"></script>
+
   </body>
 </html>

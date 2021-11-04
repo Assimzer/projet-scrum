@@ -15,28 +15,35 @@ class BulletinSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('bulletin')->insert([
+        DB::table('bulletins')->insert([
             'nomBulletin'           => 'Première année',
             'appreciation'           => 'cool',
             'user_id'          => 1,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
-        DB::table('bulletin')->insert([
-            'nomBulletin'           => 'Première année',
-            'appreciation'           => 'cool',
+        DB::table('bulletins')->insert([
+            'nomBulletin'           => '1er Semestre',
+            'appreciation'           => 'bulletin test premier semestre',
             'user_id'          => 2,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
-        DB::table('bulletin')->insert([
+        DB::table('bulletins')->insert([
+            'nomBulletin'           => '2er Semestre',
+            'appreciation'           => 'bulletin test second semestre',
+            'user_id'          => 2,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+        DB::table('bulletins')->insert([
             'nomBulletin'           => 'Première année',
             'appreciation'           => 'cool',
             'user_id'          => 3,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
-        DB::table('bulletin')->insert([
+        DB::table('bulletins')->insert([
             'nomBulletin'           => 'Première année',
             'appreciation'           => 'cool',
             'user_id'          => 4,

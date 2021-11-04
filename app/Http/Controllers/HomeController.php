@@ -40,5 +40,13 @@ class HomeController extends Controller
     public function settings(){
         return view('settings');
     }
+
+    public function OffrePage(){
+        return view('offre');
+    }
+
+    public function ProfilePage(){
+        return view('profils');
+    }
     
 }

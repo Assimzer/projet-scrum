@@ -1,297 +1,252 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="description" content="">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width", initial-scale=1.0>
-        <title>@yield('title')</title>
-        <link rel="stylesheet" type="text/css" href="{{url('css/dashboard.css')}}">
-        <link rel="icon" href="{{ url('img/school.ico') }}">
-    </head>
-    <body>
-        <div class="container">
-            @if(Auth::user()->roles->profileType == "Admin")
-                <div class="navigation">
-                    <ul>
-                        <li>
-                            <a href="#">
-                                <span class="icon"><ion-icon name="school-outline"></ion-icon></span>
-                                <span class="title">Apprenti Recrutor 2000</span>
-                            </a>
-                        </li>
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+    <link rel="icon" href="{{ url('images/icons/graduation.ico') }}">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<title>@yield('title')</title>
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+     <!-- Bootstrap core CSS     -->
+    <link href="{{url('assets/css/bootstrap.min.css')}}" rel="stylesheet" />
+    <!--  Paper Dashboard core CSS    -->
+    <link href="{{url('assets/css/paper-dashboard.css')}}" rel="stylesheet"/>
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link href="{{url('assets/css/demo.css')}}" rel="stylesheet" />
+    <!--  Fonts and icons     -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
+    <link href="{{url('assets/css/themify-icons.css')}}" rel="stylesheet">
+</head>
+
+<body>
+	<div class="wrapper">
+	    <div class="sidebar" data-background-color="brown" data-active-color="primary">
+	    <!--
+			Tip 1: you can change the color of the sidebar's background using: data-background-color="white | brown"
+			Tip 2: you can change the color of the active button using the data-active-color="primary | info | success | warning | danger"
+		-->
+			<div class="logo">
+				<a href="{{route('home')}}" class="simple-text logo-mini">
+					AR
+				</a>
+
+				<a href="{{route('home')}}" class="simple-text logo-normal">
+					AR2000
+				</a>
+			</div>
+	    	<div class="sidebar-wrapper">
+				<div class="user">
+	                <div class="info">
+						<div class="photo">
+                            <img src="{{ Gravatar::src(Auth::user()->email) }}">
+		                </div>
+
+	                    <a data-toggle="collapse" href="#collapseExample" class="collapsed">
+	                        <span>
+                                {{Auth::user()->name}} {{Auth::user()->fristname}}
+		                        <b class="caret"></b>
+							</span>
+	                    </a>
+						<div class="clearfix"></div>
+
+	                    <div class="collapse" id="collapseExample">
+	                        <ul class="nav">
+	                            <li>
+									<a href="{{route('ProfilePage')}}">
+										<span class="sidebar-mini">P</span>
+										<span class="sidebar-normal">Profile</span>
+									</a>
+								</li>
+	                        </ul>
+	                    </div>
+	                </div>
+	            </div>
+                @if(Auth::user()->roles->profileType == "Eleve")
+                    <ul class="nav">
                         @if(Route::is('home') )
-                        <li class="hovered">
-                            <a href="#">
-                                <span class="icon"><ion-icon name="home-outline"></ion-icon></ion-icon></span>
-                                <span class="title">Dashboard</span>
-                            </a>
-                        </li>
+                            <li class="active">
+                                <a href="{{route('home')}}">
+                                    <i class="fas fa-home"></i>
+                                    <p>Home</p>
+                                </a>
+                            </li>
                         @else
-                        <li>
-                            <a href="#">
-                                <span class="icon"><ion-icon name="home-outline"></ion-icon></ion-icon></span>
-                                <span class="title">Dashboard</span>
-                            </a>
-                        </li>
+                            <li class="">
+                                <a href="{{route('home')}}">
+                                    <i class="fas fa-home"></i>
+                                    <p>Home</p>
+                                </a>
+                            </li>
                         @endif
-                        <li>
-                            <a href="{{route('showbulletinAdmin')}}">
-                                <span class="icon"><ion-icon name="newspaper-outline"></ion-icon></span>
-                                <span class="title">Bulletin</span>
-                            </a>
-                        </li>
-
-
-                        <li>
-                            <a href="#">
-                                <span class="icon"><ion-icon name="book-outline"></ion-icon></span>
-                                <span class="title">CRUD Matiere</span>
-                            </a>
-                        </li>
-
-                        
-                        <li>
-                            <a href="#">
-                                <span class="icon"><ion-icon name="settings-outline"></ion-icon></span>
-                                <span class="title">Paramètres</span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="{{route('logout')}}">
-                                <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
-                                <span class="title">Deconnexion</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            @endif
-
-            @if(Auth::user()->roles->profileType == "Eleve")
-                <div class="navigation">
-                    <ul>
-                        <li>
-                            <a href="{{route('home')}}">
-                                <span class="icon"><ion-icon name="school-outline"></ion-icon></span>
-                                <span class="title">Apprenti Recrutor 2000</span>
-                            </a>
-                        </li>
-                        @if(Route::is('home') )
-                        <li class="hovered">
-                            <a href="{{route('home')}}">
-                                <span class="icon"><ion-icon name="home-outline"></ion-icon></ion-icon></span>
-                                <span class="title">Dashboard</span>
-                            </a>
-                        </li>
-                        @else
-                        <li>
-                            <a href="{{route('home')}}">
-                                <span class="icon"><ion-icon name="home-outline"></ion-icon></ion-icon></span>
-                                <span class="title">Dashboard</span>
-                            </a>
-                        </li>
-                        @endif
-
 
                         @if(Route::is('bulletin.index') )
-                        <li class="hovered">
-                            <a href="{{route('bulletin.index')}}">
-                                <span class="icon"><ion-icon name="newspaper-outline"></ion-icon></span>
-                                <span class="title">Bulletins</span>
-                            </a>
-                        </li>
+                            <li class="active">
+                                <a href="{{route('bulletin.index')}}">
+                                    <i class="fas fa-scroll"></i>
+                                    <p>Bulletin</p>
+                                </a>
+                            </li>
                         @else
-                        <li>
-                            <a href="{{route('bulletin.index')}}">
-                                <span class="icon"><ion-icon name="newspaper-outline"></ion-icon></span>
-                                <span class="title">Bulletins</span>
-                            </a>
-                        </li>
+                            <li>
+                                <a href="{{route('bulletin.index')}}">
+                                    <i class="fas fa-scroll"></i>
+                                    <p>Bulletin</p>
+                                </a>
+                            </li>
                         @endif
-                        
 
-                        @if(Route::is('offre.index') )
-                        <li class="hovered">
-                            <a href="{{route('offre.index')}}">
-                                <span class="icon"><ion-icon name="book-outline"></ion-icon></span>
-                                <span class="title">Offres</span>
-                            </a>
-                        </li>
+                        @if(Route::is('OffrePage') )
+                            <li class="active">
+                                <a href="{{route('OffrePage')}}">
+                                    <i class="far fa-newspaper"></i>
+                                    <p>Offres</p>
+                                </a>
+                            </li>
                         @else
-                        <li>
-                            <a href="{{route('offre.index')}}">
-                                <span class="icon"><ion-icon name="book-outline"></ion-icon></span>
-                                <span class="title">Offres</span>
-                            </a>
-                        </li>
+                            <li>
+                                <a href="{{route('OffrePage')}}">
+                                    <i class="far fa-newspaper"></i>
+                                    <p>Offres</p>
+                                </a>
+                            </li>
                         @endif
-                        
-
-                        @if(Route::is('settings') )
-                        <li class="hovered">
-                            <a href="{{route('settings')}}">
-                                <span class="icon"><ion-icon name="settings-outline"></ion-icon></span>
-                                <span class="title">Paramètres</span>
-                            </a>
-                        </li>
-                        @else
-                        <li>
-                            <a href="{{route('settings')}}">
-                                <span class="icon"><ion-icon name="settings-outline"></ion-icon></span>
-                                <span class="title">Paramètres</span>
-                            </a>
-                        </li>
-                        @endif
-                        
 
                         <li>
                             <a href="{{route('logout')}}">
-                                <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
-                                <span class="title">Deconnexion</span>
+                                <i class="fas fa-sign-out-alt"></i>
+                                <p>Déconnexion</p>
                             </a>
                         </li>
+                            
                     </ul>
+                @endif
+	    	</div>
+	    </div>
+
+	    <div class="main-panel">
+			<nav class="navbar navbar-default">
+	            <div class="container-fluid">
+					<div class="navbar-minimize">
+						<button id="minimizeSidebar" class="btn btn-fill btn-icon"><i class="ti-more-alt"></i></button>
+					</div>
+	                <div class="navbar-header">
+	                    <button type="button" class="navbar-toggle">
+	                        <span class="sr-only">Toggle navigation</span>
+	                        <span class="icon-bar bar1"></span>
+	                        <span class="icon-bar bar2"></span>
+	                        <span class="icon-bar bar3"></span>
+	                    </button>
+	                </div>
+	                <div class="collapse navbar-collapse" style="margin-left: 45%;">
+
+						<form class="navbar-form navbar-left navbar-search-form" role="search">
+	    					<div class="input-group">
+	    						<span class="input-group-addon"><i class="fa fa-search"></i></span>
+	    						<input type="text" value="" class="form-control" placeholder="Search...">
+	    					</div>
+	    				</form>
+
+	                    <ul class="nav navbar-nav navbar-right">
+	                        <li class="dropdown">
+	                            <a href="#notifications" class="dropdown-toggle btn-rotate" data-toggle="dropdown">
+	                                <i class="ti-bell"></i>
+	                                <span class="notification">5</span>
+									<p class="hidden-md hidden-lg">
+										Notifications
+										<b class="caret"></b>
+									</p>
+	                            </a>
+	                            <ul class="dropdown-menu">
+	                                <li><a href="#not1">Notification 1</a></li>
+	                                <li><a href="#not2">Notification 2</a></li>
+	                                <li><a href="#not3">Notification 3</a></li>
+	                                <li><a href="#not4">Notification 4</a></li>
+	                                <li><a href="#another">Another notification</a></li>
+	                            </ul>
+	                        </li>
+	                    </ul>
+	                </div>
+	            </div>
+	        </nav>
+
+	        <div class="content">
+            @section('content')
+            @show
+	        </div>
+            <footer class="footer">
+                <div class="container-fluid">
+                    <p>©2021 Pasteur Mont Roland</p>
                 </div>
-            @endif
+            </footer>
+	    </div>
+	</div>
+</body>
 
-            <div class="navigation">
-                <ul>
-                    <li class="border">
-                        <a href="#">
-                            <span class="icon"><ion-icon name="school-outline"></ion-icon></span>
-                            <span class="title">Apprenti Recrutor 2000</span>
-                        </a>
-                    </li>
-                    @if(Route::is('home') )
-                    <li class="hovered">
-                        <a href="#">
-                            <span class="icon"><ion-icon name="home-outline"></ion-icon></ion-icon></span>
-                            <span class="title">Dashboard</span>
-                        </a>
-                    </li>
-                    @else
-                    <li>
-                        <a href="#">
-                            <span class="icon"><ion-icon name="home-outline"></ion-icon></ion-icon></span>
-                            <span class="title">Dashboard</span>
-                        </a>
-                    </li>
-                    @endif
-                    <li>
-                        <a href="{{route('bulletin.index')}}">
-                            <span class="icon"><ion-icon name="newspaper-outline"></ion-icon></span>
-                            <span class="title">Bulletins</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span class="icon"><ion-icon name="book-outline"></ion-icon></span>
-                            <span class="title">Offres</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span class="icon"><ion-icon name="settings-outline"></ion-icon></span>
-                            <span class="title">Paramètres</span>
-                        </a>
-                    </li>
+	<!--   Core JS Files. Extra: TouchPunch for touch library inside jquery-ui.min.js   -->
+	<script src="{{url('assets/js/jquery.min.js')}}" type="text/javascript"></script>
+	<script src="{{url('assets/js/jquery-ui.min.js')}}" type="text/javascript"></script>
+	<script src="{{url('assets/js/perfect-scrollbar.min.js')}}" type="text/javascript"></script>
+	<script src="{{url('assets/js/bootstrap.min.js')}}" type="text/javascript"></script>
 
-                    <li>
-                        <a href="{{route('logout')}}">
-                            <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
-                            <span class="title">Deconnexion</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+	<!--  Forms Validations Plugin -->
+	<script src="{{url('assets/js/jquery.validate.min.js')}}"></script>
 
+	<!-- Promise Library for SweetAlert2 working on IE -->
+	<script src="{{url('assets/js/es6-promise-auto.min.js')}}"></script>
 
-            <!-- main -->
-            <div class="main">
-                <div class="topbarfull">
-                <div class="topbarfullright">     
-                <div class="topbar">
-                <div class="inverted-border-radius"></div> 
-                <div class="inverted-border-right"></div>                 
-                    <div class="toggle">
-                        <ion-icon name="menu-outline"></ion-icon>
-                    </div>
-                    <h2 class="nameColored Cooper">{{Auth::user()->name}} {{Auth::user()->fristname}}</h2>
-                    <!-- userImg -->
-                    <div class="user">
-                        <img src="{{ Gravatar::src(Auth::user()->email) }}">
-                    </div>
-                </div>
-                </div>
-                </div>
+	<!--  Plugin for Date Time Picker and Full Calendar Plugin-->
+	<script src="{{url('assets/js/moment.min.js')}}"></script>
 
-                <!-- cards -->
-                <div class="cardBox">
-                    <div class="card">
-                        <div>
-                            <div class="numbers">1,504</div>
-                            <div class="cardName">Offres Totales</div>
-                        </div>
-                        <div class="iconBx">
-                            <ion-icon name="book-outline"></ion-icon>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div>
-                            <div class="numbers">1</div>
-                            <div class="cardName">Bulletins</div>
-                        </div>
-                        <div class="iconBx">
-                            <ion-icon name="newspaper-outline"></ion-icon>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div>
-                            <div class="numbers">284</div>
-                            <div class="cardName">Notifications</div>
-                        </div>
-                        <div class="iconBx">
-                            <ion-icon name="notifications-outline"></ion-icon>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div>
-                            <div class="numbers">10.25/20</div>
-                            <div class="cardName">Moyenne Général Semestre 1</div>
-                        </div>
-                        <div class="iconBx">
-                            <ion-icon name="school-outline"></ion-icon>
-                        </div>
-                    </div>
-                </div>
+	<!--  Date Time Picker Plugin is included in this js file -->
+	<script src="{{url('assets/js/bootstrap-datetimepicker.js')}}"></script>
 
-                
-                <div class="details">
-                @section('main')
-                @show
-                </div>
+	<!--  Select Picker Plugin -->
+	<script src="{{url('assets/js/bootstrap-selectpicker.js')}}"></script>
 
-            </div>
-        </div>
+	<!--  Switch and Tags Input Plugins -->
+	<script src="{{url('assets/js/bootstrap-switch-tags.js')}}"></script>
 
-        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>    
-        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-        <script>
-            // MenuToggle
-            let toggle = document.querySelector('.toggle');
-            let navigation = document.querySelector('.navigation');
-            let main = document.querySelector('.main');
+	<!-- Circle Percentage-chart -->
+	<script src="{{url('assets/js/jquery.easypiechart.min.js')}}"></script>
 
-            toggle.onclick = function()
-            {
-                navigation.classList.toggle('active');
-                main.classList.toggle('active');
-            }
+	<!--  Charts Plugin -->
+	<script src="{{url('assets/js/chartist.min.js')}}"></script>
 
-        </script>
-    </body>
+	<!--  Notifications Plugin    -->
+	<script src="{{url('assets/js/bootstrap-notify.js')}}"></script>
+
+	<!-- Sweet Alert 2 plugin -->
+	<script src="{{url('assets/js/sweetalert2.js')}}"></script>
+
+	<!-- Vector Map plugin -->
+	<script src="{{url('assets/js/jquery-jvectormap.js')}}"></script>
+
+	<!-- Wizard Plugin    -->
+	<script src="{{url('assets/js/jquery.bootstrap.wizard.min.js')}}"></script>
+
+	<!--  Bootstrap Table Plugin    -->
+	<script src="{{url('assets/js/bootstrap-table.js')}}"></script>
+
+	<!--  Plugin for DataTables.net  -->
+	<script src="{{url('assets/js/jquery.datatables.js')}}"></script>
+
+	<!--  Full Calendar Plugin    -->
+	<script src="{{url('assets/js/fullcalendar.min.js')}}"></script>
+
+	<!-- Paper Dashboard PRO Core javascript and methods for Demo purpose -->
+	<script src="{{url('assets/js/paper-dashboard.js')}}"></script>
+
+	<!-- Paper Dashboard PRO DEMO methods, don't include it in your project! -->
+	<script src="{{url('assets/js/demo.js"></script>
+
+	<script type="text/javascript">
+    	$(document).ready(function(){
+			demo.initOverviewDashboard();
+			demo.initCirclePercentage();
+
+    	});
+	</script>
+
 </html>

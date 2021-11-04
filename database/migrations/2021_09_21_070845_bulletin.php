@@ -13,7 +13,7 @@ class Bulletin extends Migration
      */
     public function up()
     {
-        Schema::create('bulletin', function (Blueprint $table) {
+        Schema::create('bulletins', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nomBulletin');
             $table->text('appreciation');

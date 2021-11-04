@@ -10,6 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 use App\Models\Notification;
 use App\Models\bulletin;
 use App\Models\roles;
+use App\Models\Recevoir;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -58,5 +59,10 @@ class User extends Authenticatable
     public function roles()
     {
         return $this->belongsTo(roles::class, 'role_id');
+    }
+
+    public function recevoirs()
+    {
+        return $this->belongsTo(Recevoir::class, 'recevoir_id');
     }
 }

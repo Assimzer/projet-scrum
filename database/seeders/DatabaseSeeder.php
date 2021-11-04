@@ -20,5 +20,6 @@ class DatabaseSeeder extends Seeder
         $this->call(MatiereSeeder::class);
         $this->call(NoteSeeder::class);
         $this->call(BulletinSeeder::class);
+        $this->call(ComposerSeeder::class);
     }
 }

@@ -19,7 +19,7 @@ class AssocierMatiere extends Migration
             $table->foreign('user_id')->references('id')->on('users');
 
             $table->integer('matiere_id')->unsigned();
-            $table->foreign('matiere_id')->references('id')->on('matiere');
+            $table->foreign('matiere_id')->references('id')->on('matieres');
 
         });
     }

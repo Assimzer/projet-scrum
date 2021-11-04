@@ -19,7 +19,7 @@ class Recevoir extends Migration
             $table->foreign('user_id')->references('id')->on('users');
 
             $table->integer('bulletin_id')->unsigned();
-            $table->foreign('bulletin_id')->references('id')->on('bulletin');
+            $table->foreign('bulletin_id')->references('id')->on('bulletins');
         });
     }
 
