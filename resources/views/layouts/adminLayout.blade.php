@@ -63,7 +63,7 @@
 	                    </div>
 	                </div>
 	            </div>
-                @if(Auth::user()->roles->profileType == "Eleve")
+                @if(Auth::user()->roles->profileType == "ResponsableDispositif")
                     <ul class="nav">
                         @if(Route::is('home') )
                             <li class="active">
@@ -81,76 +81,27 @@
                             </li>
                         @endif
 
-                        @if(Route::is('bulletin.index') )
-						<li class="active">
-							<a data-toggle="collapse" href="#BulletinOverview">
-								<i class="fas fa-scroll"></i>
-								<p>Bulletin
-									<b class="caret"></b>
-								</p>
-							</a>
-							<div class="collapse" id="BulletinOverview">
-								<ul class="nav">
-									@foreach($bulletins as $bull)
-									<li>
-										<a href="{{route('showbulletin',['uuid' => $bull->bulletin_index])}}">
-											<span class="sidebar-normal">{{$bull->nomBulletin}}</span>
-										</a>
-									</li>
-									@endforeach
-									
-									<li>
-										<a href="dashboard/stats.html">
-											<span class="sidebar-normal">bulletin</span>
-										</a>
-									</li>
-								</ul>
-							</div>
-						</li>
-                        @else
-						<li>
-							<a data-toggle="collapse" href="#BulletinOverview">
-								<i class="fas fa-scroll"></i>
-								<p>Bulletin
-									<b class="caret"></b>
-								</p>
-							</a>
-							<div class="collapse" id="BulletinOverview">
-								<ul class="nav">
-									@foreach($bulletins as $bull)
-									<li>
-										<a href="{{route('showbulletin',['uuid' => $bull->bulletin_index])}}">
-											<span class="sidebar-normal">{{$bull->nomBulletin}}</span>
-										</a>
-									</li>
-									@endforeach
-									
-									<li>
-										<a href="dashboard/stats.html">
-											<span class="sidebar-normal">bulletin</span>
-										</a>
-									</li>
-								</ul>
-							</div>
-						</li>
-                            
-                        @endif
+                        
+                        <li>
+                            <a href="{{route('logout')}}">
+                                <i class="fas fa-sign-out-alt"></i>
+                                <p>Bulletins</p>
+                            </a>
+                        </li>
 
-                        @if(Route::is('OffrePage') )
-                            <li class="active">
-                                <a href="{{route('OffrePage')}}">
-                                    <i class="far fa-newspaper"></i>
-                                    <p>Offres</p>
-                                </a>
-                            </li>
-                        @else
-                            <li>
-                                <a href="{{route('OffrePage')}}">
-                                    <i class="far fa-newspaper"></i>
-                                    <p>Offres</p>
-                                </a>
-                            </li>
-                        @endif
+                        <li>
+                            <a href="{{route('logout')}}">
+                                <i class="fas fa-sign-out-alt"></i>
+                                <p>Matieres</p>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{route('logout')}}">
+                                <i class="fas fa-sign-out-alt"></i>
+                                <p>Notes</p>
+                            </a>
+                        </li>
 
                         <li>
                             <a href="{{route('logout')}}">
@@ -161,10 +112,6 @@
                             
                     </ul>
                 @endif
-				@if(Auth::user()->roles->profileType == "ResponsableDispositif")
-					<script>window.location = "{{ route('GetDashAdmin') }}";</script>
-					<?php exit; ?>
-				@endif
 	    	</div>
 	    </div>
 

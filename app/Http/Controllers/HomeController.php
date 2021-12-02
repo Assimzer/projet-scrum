@@ -7,6 +7,8 @@ use Auth;
 use DB;
 Use \Carbon\Carbon;
 use App\Models\User;
+use App\Models\offre;
+use App\Models\bulletin;
 class HomeController extends Controller
 {
     /**
@@ -26,7 +28,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $bulletins = bulletin::all()->where('user_id', '=', Auth::User()->id);
+        return view('home',compact('bulletins'));
+        
     }
 
     public function logout(Request $request)
@@ -42,7 +46,9 @@ class HomeController extends Controller
     }
 
     public function OffrePage(){
-        return view('offre');
+        $offreASI = offre::all();
+        $bulletins = bulletin::all()->where('user_id', '=', Auth::User()->id);
+        return view('offre',compact('offreASI','bulletins'));
     }
 
     public function ProfilePage(){

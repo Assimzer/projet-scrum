@@ -6,6 +6,8 @@ use Illuminate\Database\Seeder;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+
 class BulletinSeeder extends Seeder
 {
     /**
@@ -19,6 +21,7 @@ class BulletinSeeder extends Seeder
             'nomBulletin'           => 'Première année',
             'appreciation'           => 'cool',
             'user_id'          => 1,
+            'bulletin_index'                  => Str::uuid()->toString(),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
@@ -26,6 +29,7 @@ class BulletinSeeder extends Seeder
             'nomBulletin'           => '1er Semestre',
             'appreciation'           => 'bulletin test premier semestre',
             'user_id'          => 2,
+            'bulletin_index'                  => Str::uuid()->toString(),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
@@ -33,6 +37,7 @@ class BulletinSeeder extends Seeder
             'nomBulletin'           => '2er Semestre',
             'appreciation'           => 'bulletin test second semestre',
             'user_id'          => 2,
+            'bulletin_index'                  => Str::uuid()->toString(),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
@@ -40,15 +45,17 @@ class BulletinSeeder extends Seeder
             'nomBulletin'           => 'Première année',
             'appreciation'           => 'cool',
             'user_id'          => 3,
+            'bulletin_index'                  => Str::uuid()->toString(),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
         DB::table('bulletins')->insert([
-            'nomBulletin'           => 'Première année',
+            'nomBulletin'            => 'Première année',
             'appreciation'           => 'cool',
-            'user_id'          => 4,
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
+            'user_id'                => 4,
+            'bulletin_index'         => Str::uuid()->toString(),
+            'created_at'             => Carbon::now(),
+            'updated_at'             => Carbon::now(),
         ]);
 
     }

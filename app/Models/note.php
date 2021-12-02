@@ -16,7 +16,7 @@ class note extends Model
 
     public function matieres()
     {
-        return $this->belongsToMany(Matiere::class, 'matiere_id');
+        return $this->belongsToMany(Matiere::class, 'possede_notes', 'matiere_id', 'note_id');
     }
 
     public function periode()

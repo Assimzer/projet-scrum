@@ -15,6 +15,7 @@ class Bulletin extends Migration
     {
         Schema::create('bulletins', function (Blueprint $table) {
             $table->increments('id');
+            $table->uuid('bulletin_index');
             $table->string('nomBulletin');
             $table->text('appreciation');
             $table->integer('user_id')->unsigned();

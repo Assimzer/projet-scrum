@@ -21,5 +21,11 @@ class DatabaseSeeder extends Seeder
         $this->call(NoteSeeder::class);
         $this->call(BulletinSeeder::class);
         $this->call(ComposerSeeder::class);
+        $this->call(OffreTypeSeeder::class);
+        $this->call(OffreSkillSeeder::class);
+        $this->call(OffreLocationSeeder::class);
+        $this->call(OffreSeeder::class);
+        $this->call(ContienSkillSeeder::class);
+        $this->call(PossedeNoteSeeder::class);
     }
 }

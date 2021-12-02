@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ContienSkill extends Migration
+class CreatePossedeNotesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class ContienSkill extends Migration
      */
     public function up()
     {
-        Schema::create('contien_skill', function (Blueprint $table) {
+        Schema::create('possede_notes', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('offre_skills_id')->unsigned();
-            $table->foreign('offre_skills_id')->references('id')->on('offre_skills');
 
-            $table->integer('offre_id')->unsigned();
-            $table->foreign('offre_id')->references('id')->on('offre');
+            $table->integer('matiere_id')->unsigned();
+            $table->foreign('matiere_id')->references('id')->on('matieres');
+
+            $table->integer('note_id')->unsigned();
+            $table->foreign('note_id')->references('id')->on('note');
 
             $table->timestamps();
         });
@@ -32,6 +33,6 @@ class ContienSkill extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contien_skill');
+        Schema::dropIfExists('possede_notes');
     }
 }

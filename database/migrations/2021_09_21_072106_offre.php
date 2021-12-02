@@ -18,8 +18,13 @@ class Offre extends Migration
             $table->string('titre');
             $table->date('date');
             $table->text('description');
-            $table->string('téléphone');
-            $table->binary('pdf');
+            $table->string('resumer');
+            $table->string('telephone');
+            $table->string('pdf')->nullable();
+            $table->integer('offreType_id')->unsigned();
+            $table->foreign('offreType_id')->references('id')->on('offreType');
+            $table->integer('offreLocation_id')->unsigned();
+            $table->foreign('offreLocation_id')->references('id')->on('offreLocation');
         });
     }
 

@@ -4,9 +4,8 @@ namespace App\Http\Controllers\Ressources;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\offre;
-
-class OffreController extends Controller
+use App\Models\offreType;
+class OffreTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +14,8 @@ class OffreController extends Controller
      */
     public function index()
     {
-        $offreASI = offre::all();
-        return view('offre',compact('offreASI'));
-       
+        $offretype = offreType::all();
+        return view('offreType',compact('offretype'));
     }
 
     /**
