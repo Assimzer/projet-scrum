@@ -13,7 +13,7 @@ class bulletin extends Model
     use HasFactory;
 
     protected $table = 'bulletins';
-    protected $fillable = ['nomBulletin', 'appreciation'];
+    protected $fillable = ['nomBulletin', 'appreciation','bulletin_index','user_id'];
 
     public function users()
     {
@@ -22,7 +22,7 @@ class bulletin extends Model
 
     public function matieres()
     {
-        return $this->belongsToMany(matiere::class,'composer');
+        return $this->belongsToMany(matiere::class,'composer')->withPivot('appreciation', 'coefGlobal');
     }
     
 }

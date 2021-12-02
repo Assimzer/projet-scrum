@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Bulletin extends Migration
+class CreatePossedeNotesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,15 @@ class Bulletin extends Migration
      */
     public function up()
     {
-        Schema::create('bulletins', function (Blueprint $table) {
+        Schema::create('possede_notes', function (Blueprint $table) {
             $table->increments('id');
-            $table->uuid('bulletin_index');
-            $table->string('nomBulletin');
-            $table->text('appreciation');
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
+
+            $table->integer('matiere_id')->unsigned();
+            $table->foreign('matiere_id')->references('id')->on('matieres');
+
+            $table->integer('note_id')->unsigned();
+            $table->foreign('note_id')->references('id')->on('note');
+
             $table->timestamps();
         });
     }
@@ -31,6 +33,6 @@ class Bulletin extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bulletin');
+        Schema::dropIfExists('possede_notes');
     }
 }

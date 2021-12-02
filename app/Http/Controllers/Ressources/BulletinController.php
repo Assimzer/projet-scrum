@@ -28,9 +28,12 @@ class BulletinController extends Controller
 
         //SELECT * FROM `composer` INNER JOIN matiere INNER JOIN bulletin INNER JOIN users WHERE matiere.id = `matiere_id` AND `bulletin_id`=2 AND users.id=2;
         $bulletins = bulletin::all()->where('user_id', '=', Auth::User()->id);
-        //$test = bulletin::find(2);
+        $bulletinsLast = bulletin::latest()->where('user_id', '=', Auth::User()->id)->first();
+        //dd($bulletins[0]->matieres[0]->matiereToNotes);
+        //virer possede type
+        //pivot table de gauche _ tablede droite dans ordre aplha
         //dd($test->matieres);
-        return view('bulletin',compact('bulletins'));
+        return view('bulletin',compact('bulletins','bulletinsLast'));
     }
     
     public function IndexAdmin()
@@ -38,7 +41,7 @@ class BulletinController extends Controller
         $bulletinsAll = bulletin::all();
         return view('bulletins.index',compact('bulletinsAll'));
 
-        return view('bulletin',compact('bulletins','bulletinCount'));
+        //return view('bulletin',compact('bulletins','bulletinCount'));
 
     }
     /**
@@ -68,10 +71,12 @@ class BulletinController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($uuid)
     {
-        #$bulletins = bulletin::find($id);
-        #return view('showbulletin',compact('bulletins'));
+        $bulletins = bulletin::where('bulletin_index','=',$uuid)->get();
+        //$appreciation = bulletin::where('bulletin_index','=',$uuid)->get()->pivot->appreciation;
+        //dd($appreciation[0]);
+        return view('bulletins.showbulletin',compact('bulletins'));
     }
 
     /**
