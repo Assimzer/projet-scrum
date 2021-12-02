@@ -31,5 +31,6 @@ Route::resource('/dashboard/bulletin', BulletinController::class);
 Route::resource('/dashboard/offre', OffreController::class);
 Route::get('/bulletin/{id}', [BulletinController::class, 'show'])->middleware(BulletinMiddleware::class);
 Route::get('/Admin/bulletin',[BulletinController::class, 'IndexAdmin'])->name('showbulletinAdmin');
+Route::get('/dashboard/Offres/pdf/{id}',[OffreController::class, 'createPDF'])->name('createPDF');
 
 

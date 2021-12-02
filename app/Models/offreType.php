@@ -15,7 +15,11 @@ class offreType extends Model
 
     public function offres()
     {
-        return $this->belongsToMany(Offre::class, 'offre_id');
+        return $this->hasMany(Offre::class,'offreType_id');
+    }
+    public function possede_type()
+    {
+        return $this->hasMany(PossedeType::class, 'possede_type_id');
     }
     
 

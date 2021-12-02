@@ -4,7 +4,7 @@
 @section('content')
 
 
-<div class="row">
+
     @foreach($bulletins as $bulletin)
 
     <div class="col-lg-6 col-md-12">
@@ -17,8 +17,9 @@
                 <div class="nav-tabs-navigation">
                     <div class="nav-tabs-wrapper">
                         <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
-                            <li class="active"><a href="#{{$bulletin->nomBulletin}}" data-toggle="tab">{{$bulletin->nomBulletin}}</a></li>
+                            <li class="active"><a href="#{{$bulletin->nomBulletin}}" data-toggle="tab">{{$bulletins->nomBulletin}}</a></li>
                             
+                            <div class="col-lg-6 col-md-12">                           
 
                         </ul>
                         

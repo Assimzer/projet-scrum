@@ -7,6 +7,8 @@ use Auth;
 use DB;
 Use \Carbon\Carbon;
 use App\Models\User;
+use App\Models\offre;
+use App\Models\Option;
 class HomeController extends Controller
 {
     /**

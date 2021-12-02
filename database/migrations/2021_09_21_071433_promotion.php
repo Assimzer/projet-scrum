@@ -17,6 +17,8 @@ class Promotion extends Migration
             $table->increments('id');
             $table->string('nomPromotion');
             $table->date('anneePromotion');
+            $table->integer('option_id')->unsigned();
+            $table->foreign('option_id')->references('id')->on('options');
         });
     }
 

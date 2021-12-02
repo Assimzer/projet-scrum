@@ -11,6 +11,8 @@ use App\Models\Notification;
 use App\Models\bulletin;
 use App\Models\roles;
 use App\Models\Recevoir;
+use App\Models\offre;
+use App\Models\Option;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -25,6 +27,7 @@ class User extends Authenticatable
         'fristname',
         'email',
         'password',
+        'option_id',
     ];
 
     /**
@@ -65,4 +68,16 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Recevoir::class, 'recevoir_id');
     }
+    public function offres()
+    {
+        return $this->hasMany(offre::class, 'offre_id');
+    }
+
+    public function option(){
+        return $this->belongsTo(Option::class, 'option_id');
+    }
+    public function postuler_offre(){
+        return $this->belongsToMany(PostulerOffre::class, 'option_id');
+    }
+    
 }

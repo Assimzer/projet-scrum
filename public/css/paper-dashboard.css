@@ -11557,6 +11557,7 @@ star {
     line-height: 1.6em;
     margin-top: 10px;
     padding: 7px 10px;
+    
 }
 
 .panel-border {
@@ -12082,6 +12083,7 @@ star {
 
 .nav-tabs-navigation .nav > li > a {
     padding-bottom: 20px;
+    
 }
 
 .nav-tabs-wrapper {
@@ -12117,8 +12119,9 @@ star {
 .nav-tabs > li.active > a:hover,
 .nav-tabs > li.active > a:focus {
     background-color: transparent;
-    border: 0 none;
+    border: 0 none; 
 }
+
 
 .nav-tabs > li.active :after {
     border-bottom: 11px solid #FFFFFF;
@@ -13350,4 +13353,8 @@ star {
         border-top: 12px solid transparent;
         border-bottom: 12px solid transparent;
     }
+}
+.row:before{
+    text-align: end;
+
 }

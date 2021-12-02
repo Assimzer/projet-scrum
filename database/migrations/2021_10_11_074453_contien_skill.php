@@ -18,8 +18,8 @@ class ContienSkill extends Migration
             $table->integer('offre_skills_id')->unsigned();
             $table->foreign('offre_skills_id')->references('id')->on('offre_skills');
 
-            $table->integer('offreType_id')->unsigned();
-            $table->foreign('offreType_id')->references('id')->on('offreType');
+            $table->integer('offre_id')->unsigned();
+            $table->foreign('offre_id')->references('id')->on('offre');
 
             $table->timestamps();
         });

@@ -15,6 +15,6 @@ class offreLocation extends Model
 
     public function offre()
     {
-        return $this->belongsTo(Offre::class, 'offre_id');
+        return $this->hasOne(Offre::class, 'offre_id');
     }
 }

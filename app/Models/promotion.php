@@ -23,4 +23,12 @@ class promotion extends Model
     {
         return $this->belongsTo(Periode::class, 'periode_id');
     }
+    public function option()
+    {
+        return $this->belongsToMany(Option::class, 'option_id');
+    }
+    public function promotion()
+    {
+        return $this->belongsToMany(Promotion::class, 'promotion_id');
+    }
 }
