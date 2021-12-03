@@ -43,6 +43,6 @@ Route::resource('/dashboard/offre', OffreController::class);
 
 Route::get('/Admin/Dashboard',[AdminController::class, 'GetDashboardAdmin'])->name('GetDashAdmin');
 Route::get('/Admin/bulletin',[BulletinController::class, 'IndexAdmin'])->name('showbulletinAdmin');
-Route::get('/dashboard/Offres/pdf/{id}',[OffreController::class, 'createPDF'])->name('createPDF');
+Route:  :get('/dashboard/Offres/pdf/{id}',[OffreController::class, 'createPDF'])->name('createPDF');
 
 
