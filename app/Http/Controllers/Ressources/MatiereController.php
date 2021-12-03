@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Ressources;
 
-
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\matiere;
 
@@ -15,8 +15,8 @@ class MatiereController extends Controller
      */
     public function index()
     {
-        $matiere = matiere::all();
-        return view('matiere.index');
+        $matieres = matiere::all();
+        return view('matiere.index',compact('matieres'));
     }
 
     /**
@@ -26,7 +26,8 @@ class MatiereController extends Controller
      */
     public function create()
     {
-        return view('matiere.create');
+        $matieres = matiere::all();
+        return view('matiere.create',compact('matieres'));
     }
 
     /**
@@ -44,7 +45,7 @@ class MatiereController extends Controller
     
         Matiere::create($request->all());
      
-        return redirect()->route('matiere.index')
+        return redirect()->route('Matiere.index')
                         ->with('success','Matiere created successfully.');
     }
 
@@ -56,7 +57,7 @@ class MatiereController extends Controller
      */
     public function show(Matiere $matiere)
     {
-        return view('matiere.show',compact('matiere'));
+        return view('Matiere.show',compact('matiere'));
     }
 
     /**
@@ -65,9 +66,10 @@ class MatiereController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Matiere $matiere)
+    public function edit($id)
     {
-        return view('matiere.edit',compact('matiere'));
+        $matiere = matiere::findOrFail($id);
+        return view('Matiere.edit',compact('matiere'));
     }
 
     /**
@@ -77,16 +79,16 @@ class MatiereController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Matiere $matiere)
+    public function update(Request $request, $id)
     {
         $request->validate([
             'nomMatiere' => 'required',
             'sousCoefficient' => 'required',
         ]);
     
-        $matiere->update($request->all());
+        matiere::find($id)->update($request->all());
     
-        return redirect()->route('matiere.index')
+        return redirect()->route('Matiere.index')
                         ->with('success','Matiere updated successfully');
     }
 
@@ -96,11 +98,12 @@ class MatiereController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Matiere $matiere)
+    public function destroy($id)
     {
-        $matiere->delete();
+        $mat = matiere::findOrFail($id);
+        $mat->delete();
     
-        return redirect()->route('matiere.index')
+        return redirect()->route('Matiere.index')
                         ->with('success','Matiere deleted successfully');
     }
 }

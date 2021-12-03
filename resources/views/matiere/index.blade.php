@@ -1,16 +1,54 @@
-@extends('layouts.dashboardLayout')
+@extends('layouts.adminLayout')
 
-@section('title', 'ApprentisRecrutor2000 Matiere')
-@section('main')
+@section('title', 'ApprentisRecrutor2000 Admin')
+@section('content')
 
-@foreach($matieres as $matiere)
-<div class="cardBox">
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <h5 class="card-title">{{$matiere->nomMatiere}}</h5><br>
-            <p class="card-text">{{$matiere->sousCoefficient}}</p><br>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-md-12">
+                        <a href="{{route('Matiere.create')}}"type="button" class="btn btn-md btn-outline-primary">Ajouter une matiere</a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="card-content table-responsive table-full-width">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="text-center">#</th>
+                            <th>Matiere</th>
+                            <th>Coeff</th>
+                            <th class="text-right">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($matieres as $matiere)
+                            <tr>
+                                <td class="text-center">{{$matiere->id}}</td>
+                                <td>{{$matiere->nomMatiere}}</td>
+                                <td>{{$matiere->sousCoefficient}}</td>
+                                <td class="td-actions text-right">
+                                    <a href="{{ route('Matiere.edit', $matiere->id)}}" rel="tooltip" title="Edit Matiere" class="btn btn-success btn-simple btn-xs">
+                                    Editer
+                                    </a>
+                                    
+                                    <form action="{{ route('Matiere.destroy', $matiere->id)}}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-danger btn-simple btn-xs" type="submit">Supprimer</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
+    
 </div>
-@endforeach
 @endsection

@@ -81,18 +81,23 @@
                             </li>
                         @endif
 
-                        
                         <li>
-                            <a href="{{route('logout')}}">
-                                <i class="fas fa-sign-out-alt"></i>
-                                <p>Bulletins</p>
+                            <a href="{{route('Matiere.index')}}">
+								<i class="fas fa-book-reader"></i>
+                                <p>Groupe_Matieres</p>
+                            </a>
+                        </li>
+						<li>
+                            <a href="{{route('Matiere.index')}}">
+								<i class="fas fa-book-reader"></i>
+                                <p>Sous_Matieres</p>
                             </a>
                         </li>
 
                         <li>
                             <a href="{{route('logout')}}">
                                 <i class="fas fa-sign-out-alt"></i>
-                                <p>Matieres</p>
+                                <p>Bulletins</p>
                             </a>
                         </li>
 

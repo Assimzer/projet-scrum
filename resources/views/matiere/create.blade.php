@@ -1,46 +1,30 @@
-@extends('layouts.dashboardLayout')
+@extends('layouts.adminLayout')
 
-@section('title', 'ApprentisRecrutor2000 Matieres')
-@section('main')
+@section('title', 'ApprentisRecrutor2000 Admin')
+@section('content')
 
-<div class="row" style="margin-top: 5rem;">
-    <div class="col-lg-12 margin-tb">
-        <div class="pull-left">
-            <h2>CRUD Matiere</h2>
-        </div>
-        <div class="pull-right">
-            <a class="btn btn-success" href="{{ route('matiere.create') }}"> Ajouter une matière</a>
+<div class="row">
+    <div class="col-md-6">
+        <div class="cardBox">
+            <div class="card" style="padding:10px;">
+                <div class="card-body">
+                    <p>Ajouter une matière</p>
+                    <form method="post" action="{{ route('Matiere.store') }}">
+                        @csrf
+                        <div class="form-group">
+                            <label for="marque">Nom De La Matiere:</label>
+                            <input type="text" class="form-control" name="nomMatiere"/>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="prix">Sous Coefficient :</label>
+                            <input type="text" class="form-control" name="sousCoefficient"/>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Ajouter</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-
-@if ($message = Session::get('success'))
-    <div class="alert alert-success">
-        <p>{{ $message }}</p>
-    </div>
-@endif
-
-<table class="table table-bordered">
-    <tr>
-        <th>nomMatiere</th>
-        <th>sousCoefficient</th>
-        <th width="280px">Action</th>
-    </tr>
-    @foreach ($data as $key => $value)
-    <tr>
-        <td>{{ ++$i }}</td>
-        <td>{{ $value->title }}</td>
-        <td>
-            <form action="{{ route('matiere.destroy',$value->id) }}" method="POST">   
-                <a class="btn btn-info" href="{{ route('matiere.show',$value->id) }}">Montrer</a>    
-                <a class="btn btn-primary" href="{{ route('matiere.edit',$value->id) }}">Modifier</a>   
-                @csrf
-                @method('DELETE')      
-                <button type="submit" class="btn btn-danger">Supprimer</button>
-            </form>
-        </td>
-    </tr>
-    @endforeach
-</table>  
-{!! $data->links() !!}      
 @endsection

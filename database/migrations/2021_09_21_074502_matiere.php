@@ -3,7 +3,6 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-
 class Matiere extends Migration
 {
     /**
@@ -17,6 +16,8 @@ class Matiere extends Migration
             $table->increments('id');
             $table->string('nomMatiere');
             $table->integer('sousCoefficient');
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
         });
     }
 

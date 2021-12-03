@@ -17,42 +17,42 @@ class MatiereSeeder extends Seeder
     public function run()
     {
         DB::table('matieres')->insert([
-            'nomMatiere' => 'Anglais',
+            'nomMatiere' => 'Anglais_Professionnel',
             'sousCoefficient' => 1,
         ]);
 
         DB::table('matieres')->insert([
-            'nomMatiere' => 'Outil_mathematique',
+            'nomMatiere' => 'Outils_Mathématiques',
             'sousCoefficient' => 1,
         ]);
 
         DB::table('matieres')->insert([
-            'nomMatiere' => 'Droit_informatique',
+            'nomMatiere' => 'Droit_Informatique',
             'sousCoefficient' => 1,
         ]);
 
         DB::table('matieres')->insert([
-            'nomMatiere' => 'Management_Budgetisation',
+            'nomMatiere' => 'Management_Budgétisation',
             'sousCoefficient' => 2,
         ]);
 
         DB::table('matieres')->insert([
-            'nomMatiere' => 'Genie_Logiciel',
+            'nomMatiere' => 'Génie_Logiciel',
             'sousCoefficient' => 3,
         ]);
 
         DB::table('matieres')->insert([
-            'nomMatiere' => 'Reseaux_Systemes_securite',
+            'nomMatiere' => 'Réseaux_Systèmes_Sécurité',
             'sousCoefficient' => 3,
         ]);
 
         DB::table('matieres')->insert([
-            'nomMatiere' => 'BD',
+            'nomMatiere' => 'Bases_de_données',
             'sousCoefficient' => 1,
         ]);
 
         DB::table('matieres')->insert([
-            'nomMatiere' => 'Conduite_de_projet',
+            'nomMatiere' => 'Conduite_de_Projet',
             'sousCoefficient' => 3,
         ]);
 
