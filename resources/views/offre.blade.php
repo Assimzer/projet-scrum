@@ -39,7 +39,7 @@
                             @endforeach
                             </div><br><hr>
                             
-                            <span class="badge badge-pill badge-warning">{{ $loggedUser->option->optionNom }}</span>
+                            <span class="badge badge-pill badge-warning">{{ auth()->user()->option->optionNom }}</span>
                             <button type="button" class="btn btn-primary">Postuler</button>
                             
                            <a href="{{route('createPDF',['id' => $offre->id])}}">GETPDF</a>

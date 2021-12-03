@@ -9,6 +9,7 @@ Use \Carbon\Carbon;
 use App\Models\User;
 use App\Models\offre;
 use App\Models\Option;
+use App\Models\bulletin;
 class HomeController extends Controller
 {
     /**

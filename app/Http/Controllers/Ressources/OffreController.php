@@ -22,7 +22,7 @@ class OffreController extends Controller
        
     }
     public function createPDF($id) {
-        // retreive all records from db
+        //retreive all records from db
         $offre = offre::where('id','=',$id)->first();
         //$pdf = PDF::loadView('offre.pdf-offre', compact('offre'));
         //return $pdf->download('offre.pdf');
