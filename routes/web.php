@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Ressources\BulletinController;
 use App\Http\Controllers\Ressources\OffreController;
+use App\Http\Controllers\Ressources\MatiereController;
 use App\Http\Middleware\bulletinMiddleware;
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,7 @@ Route::resource('/dashboard/offre', OffreController::class);
 
 
 
+
 /*
 |--------------------------------------------------------------------------
 | ADMIN  Routes AXEL ASSIM PAS LE DROIT D'Y TOUCHER
@@ -42,7 +44,12 @@ Route::resource('/dashboard/offre', OffreController::class);
 */
 
 Route::get('/Admin/Dashboard',[AdminController::class, 'GetDashboardAdmin'])->name('GetDashAdmin');
+//Route::get('/Admin/Dashboard/matieres',[AdminController::class, 'ShowAllMatieres'])->name('ShowAllMatieres');
 Route::get('/Admin/bulletin',[BulletinController::class, 'IndexAdmin'])->name('showbulletinAdmin');
+
 Route:  :get('/dashboard/Offres/pdf/{id}',[OffreController::class, 'createPDF'])->name('createPDF');
 
+
+
+Route::resource('/Admin/dashboard/Matiere', MatiereController::class);
 
