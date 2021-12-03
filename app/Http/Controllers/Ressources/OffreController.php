@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Ressources;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\offre;
+use PDF;
 
 class OffreController extends Controller
 {
@@ -16,8 +17,17 @@ class OffreController extends Controller
     public function index()
     {
         $offreASI = offre::all();
-        return view('offre',compact('offreASI'));
+        $loggedUser = Auth::user();
+        return view('offre',compact('offreASI','loggedUser'));
        
+    }
+    public function createPDF($id) {
+        // retreive all records from db
+        $offre = offre::where('id','=',$id)->first();
+        //$pdf = PDF::loadView('offre.pdf-offre', compact('offre'));
+        //return $pdf->download('offre.pdf');
+
+        return view('offre.pdf-offre', compact('offre'));
     }
 
     /**

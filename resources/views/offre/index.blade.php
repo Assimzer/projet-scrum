@@ -4,6 +4,8 @@
 @section('main')
 
 
-<p>tu peux voir ici tout les offres emploie</p><br>
+<p>
+  vue crée pour les admins   
+ tu peux voir ici tout les offres emploie</p><br>
 
 @endsection

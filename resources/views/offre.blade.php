@@ -9,14 +9,13 @@
     <div class="col-lg-6 col-md-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">{{$offre->titre}} (H/F) <p>{{$offre->offreType->type}}</p></h4>
+                <h4 class="card-title">Offre:  {{$offre->titre}} (H/F)</h4>
                 <p class="category">&nbsp;&nbsp;{{$offre->date}}</p>
                 <p class="category">&nbsp;&nbsp;{{$offre->offreLocation->ville}}</p>
                 <p class="category">&nbsp;&nbsp;{{$offre->telephone}}</p>
             </div>
             <div class="card-content">
-                <p>{{$offre->description}}</p>
-                
+                <p>{{$offre->resumer}}</p>
 
             </div>
 
@@ -32,17 +31,20 @@
                     </a>
                     <div id="{{$offre->id}}" class="panel-collapse collapse">
                         <div class="panel-body">
-                            <p>{{$offre->resumer}}</p>
-                            
+                            <p>{{$offre->description}}</p>
+                            <span class="badge badge-pill badge-warning">{{$offre->offreType->type}}</span>
                             <div class="row">
                             @foreach($offre->offreSkills as $skill)
-                            &nbsp;&nbsp;<span class="badge badge-pill badge-primary p-2">{{$skill->skill}}</span>
+                                    &nbsp;&nbsp;<span class="badge badge-pill badge-primary p-2">{{$skill->skill}}</span>    
                             @endforeach
                             </div><br><hr>
-                            <div style="margin-left: 40%;">
-                                <button type="button" class="btn btn-primary">Postuler</button>
-                            </div>
                             
+                            <span class="badge badge-pill badge-warning">{{ $loggedUser->option->optionNom }}</span>
+                            <button type="button" class="btn btn-primary">Postuler</button>
+                            
+                           <a href="{{route('createPDF',['id' => $offre->id])}}">GETPDF</a>
+                            
+                                
                         </div>
                     </div>
                 </div>

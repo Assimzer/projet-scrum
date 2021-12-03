@@ -42,5 +42,8 @@ class offre extends Model
     {
         return $this->belongsTo(OffreLocation::class,'offreLocation_id');
     }
+    public function postuler_offre(){
+        return $this->belongsToMany(PostulerOffre::class);
+    }
 }
 

@@ -23,6 +23,8 @@ class UserSeeder extends Seeder
             'password'      => Hash::make('Azerty*1'),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
+            'option_id' => 1,
+            
         ]);
 
         DB::table('users')->insert([
@@ -33,6 +35,8 @@ class UserSeeder extends Seeder
             'password'      => Hash::make('Azerty*1'),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
+            'option_id' => 1,
+            
         ]);
 
         DB::table('users')->insert([
@@ -43,6 +47,8 @@ class UserSeeder extends Seeder
             'password'      => Hash::make('Azerty*1'),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
+            'option_id' => 1,
+            
         ]);
 
         DB::table('users')->insert([
@@ -53,6 +59,7 @@ class UserSeeder extends Seeder
             'password'      => Hash::make('Azerty*1'),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
+            'option_id' => 1,
         ]);
         DB::table('users')->insert([
             'name'           => 'Admin',
@@ -62,6 +69,9 @@ class UserSeeder extends Seeder
             'password'      => Hash::make('Azerty*1'),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
+            'option_id' => 1,
+            
         ]);
+        
     }
 }
