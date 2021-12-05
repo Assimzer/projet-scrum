@@ -21,7 +21,9 @@ class offre extends Model
     'resumer',
     'telephone',
     'ville',
-    'pdf'];
+    'pdf',
+    'entreprise_name',
+    ];
 
     
 

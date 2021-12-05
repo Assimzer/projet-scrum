@@ -47,7 +47,7 @@ Route::get('/Admin/Dashboard',[AdminController::class, 'GetDashboardAdmin'])->na
 //Route::get('/Admin/Dashboard/matieres',[AdminController::class, 'ShowAllMatieres'])->name('ShowAllMatieres');
 Route::get('/Admin/bulletin',[BulletinController::class, 'IndexAdmin'])->name('showbulletinAdmin');
 
-Route:  :get('/dashboard/Offres/pdf/{id}',[OffreController::class, 'createPDF'])->name('createPDF');
+Route::get('/dashboard/Offres/pdf/{id}',[OffreController::class, 'createPDF'])->name('createPDF');
 
 
 

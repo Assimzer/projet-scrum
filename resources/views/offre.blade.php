@@ -13,6 +13,7 @@
                 <p class="category">&nbsp;&nbsp;{{$offre->date}}</p>
                 <p class="category">&nbsp;&nbsp;{{$offre->offreLocation->ville}}</p>
                 <p class="category">&nbsp;&nbsp;{{$offre->telephone}}</p>
+                <p class="category">&nbsp;&nbsp;{{$offre->entreprise_name}}</p>
             </div>
             <div class="card-content">
                 <p>{{$offre->resumer}}</p>
@@ -33,6 +34,7 @@
                         <div class="panel-body">
                             <p>{{$offre->description}}</p>
                             <span class="badge badge-pill badge-warning">{{$offre->offreType->type}}</span>
+                            
                             <div class="row">
                             @foreach($offre->offreSkills as $skill)
                                     &nbsp;&nbsp;<span class="badge badge-pill badge-primary p-2">{{$skill->skill}}</span>    

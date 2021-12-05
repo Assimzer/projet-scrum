@@ -24,6 +24,7 @@ class OffreSeeder extends Seeder
             'telephone'          => "0384668475",
             'offreType_id' => 1,
             'offreLocation_id' => 1,
+            'entreprise_name' => "SpeedyWize",
             
         ]);
 
