@@ -24,6 +24,7 @@ class Offre extends Migration
             $table->string('telephone');
             $table->string('societer');
             $table->string('pdf')->nullable();
+            $table->string('entreprise_name')->nullable();
             $table->integer('offreType_id')->unsigned();
             $table->foreign('offreType_id')->references('id')->on('offreType');
             $table->integer('offreLocation_id')->unsigned();
