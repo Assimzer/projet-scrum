@@ -67,14 +67,14 @@
                     <ul class="nav">
                         @if(Route::is('home') )
                             <li class="active">
-                                <a href="{{route('home')}}">
+                                <a href="{{route('GetDashAdmin')}}">
                                     <i class="fas fa-home"></i>
                                     <p>Home</p>
                                 </a>
                             </li>
                         @else
                             <li class="">
-                                <a href="{{route('home')}}">
+                                <a href="{{route('GetDashAdmin')}}">
                                     <i class="fas fa-home"></i>
                                     <p>Home</p>
                                 </a>
@@ -82,29 +82,101 @@
                         @endif
 
                         <li>
-                            <a href="{{route('Matiere.index')}}">
+                            <a href="{{route('matiere.index')}}">
 								<i class="fas fa-book-reader"></i>
-                                <p>Groupe_Matieres</p>
+                                <p>Matieres</p>
                             </a>
                         </li>
 						<li>
-                            <a href="{{route('Matiere.index')}}">
+                            <a href="{{route('sousMatiere.index')}}">
 								<i class="fas fa-book-reader"></i>
-                                <p>Sous_Matieres</p>
+                                <p>Relation_SousMatieres</p>
                             </a>
                         </li>
 
                         <li>
-                            <a href="{{route('logout')}}">
-                                <i class="fas fa-sign-out-alt"></i>
+                            <a href="{{route('bulletin.index')}}">
+								<i class="fas fa-scroll"></i>
                                 <p>Bulletins</p>
                             </a>
                         </li>
 
-                        <li>
-                            <a href="{{route('logout')}}">
-                                <i class="fas fa-sign-out-alt"></i>
-                                <p>Notes</p>
+						<li>
+                            <a href="{{route('note.index')}}">
+								<i class="fas fa-sort-numeric-up"></i>
+                                <p>Devoir</p>
+                            </a>
+                        </li>
+
+						<li class="">
+							<a data-toggle="collapse" href="#BulletinOverview">
+								<i class="fas fa-user-graduate"></i>
+								<p>Utilisateur
+									<b class="caret"></b>
+								</p>
+							</a>
+							<div class="collapse" id="BulletinOverview">
+								<ul class="nav">
+									
+									<li>
+										<a href="{{route('eleve.index')}}">
+											<span class="sidebar-normal">Eleves</span>
+										</a>
+									</li>
+									<li>
+										<a href="dashboard/stats.html">
+											<span class="sidebar-normal">Professeur</span>
+										</a>
+									</li>
+									<li>
+										<a href="dashboard/stats.html">
+											<span class="sidebar-normal">Profesionnel</span>
+										</a>
+									</li>
+									<li>
+										<a href="dashboard/stats.html">
+											<span class="sidebar-normal">Responsable</span>
+										</a>
+									</li>
+									<li>
+										<a href="dashboard/stats.html">
+											<span class="sidebar-normal">Admin</span>
+										</a>
+									</li>
+									<li>
+										<a href="{{route('eleve.create')}}">
+											<span class="sidebar-normal">Ajouter</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+
+						<li>
+                            <a href="{{route('tuteur.index')}}">
+								<i class="fas fa-user-tie"></i>
+                                <p>Relation_Tuteur</p>
+                            </a>
+                        </li>
+						
+						<li>
+                            <a href="{{route('periode.index')}}">
+								<i class="far fa-calendar-alt"></i>
+                                <p>Periodes</p>
+                            </a>
+                        </li>
+
+						<li>
+                            <a href="{{route('offre.index')}}">
+								<i class="far fa-newspaper"></i>
+                                <p>Offres</p>
+                            </a>
+                        </li>
+
+						<li>
+                            <a href="{{route('notifications.index')}}">
+								<i class="fas fa-comments"></i>
+                                <p>Notification</p>
                             </a>
                         </li>
 
@@ -243,5 +315,14 @@
 
     	});
 	</script>
+
+	<script type="text/javascript">
+        $().ready(function(){
+			// Init Sliders
+            demo.initFormExtendedSliders();
+            // Init DatetimePicker
+            demo.initFormExtendedDatetimepickers();
+        });
+    </script>
 
 </html>

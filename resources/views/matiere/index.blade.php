@@ -10,7 +10,7 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col-md-12">
-                        <a href="{{route('Matiere.create')}}"type="button" class="btn btn-md btn-outline-primary">Ajouter une matiere</a>
+                        <a href="{{route('matiere.create')}}"type="button" class="btn btn-md btn-outline-primary">Ajouter un nouveau groupe</a>
                     </div>
                 </div>
 
@@ -32,11 +32,11 @@
                                 <td>{{$matiere->nomMatiere}}</td>
                                 <td>{{$matiere->sousCoefficient}}</td>
                                 <td class="td-actions text-right">
-                                    <a href="{{ route('Matiere.edit', $matiere->id)}}" rel="tooltip" title="Edit Matiere" class="btn btn-success btn-simple btn-xs">
+                                    <a href="{{ route('matiere.edit', $matiere->id)}}" rel="tooltip" title="Edit Matiere" class="btn btn-success btn-simple btn-xs">
                                     Editer
                                     </a>
                                     
-                                    <form action="{{ route('Matiere.destroy', $matiere->id)}}" method="post">
+                                    <form action="{{ route('matiere.destroy', $matiere->id)}}" method="post">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-danger btn-simple btn-xs" type="submit">Supprimer</button>

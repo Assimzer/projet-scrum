@@ -11,19 +11,19 @@
                 <div class="card">
                     <div class="card-content">
                         <div class="toolbar">
-                            <p>Edité le: {{$bulletins[0]->created_at}}</p>
+                            <p>Notes pour la periode {{$bulletin2->periode[0]->id}} du: {{$bulletin2->periode[0]->dateDebut}} au {{$bulletin2->periode[0]->dateFin}}</p>
                         </div>
                         <table id="bootstrap-table" class="table">
                             <thead>
-                                <th data-field="name">DISCIPLINES</th>
-                                <th data-field="salary">COEF</th>
-                                <th data-field="country">MOYENNES</th>
-                                <th data-field="city">EVALUATIONS</th>
-                                <th data-field="city">APPRECIATION</th>
+                                <th data-field="name">Matière</th>
+                                <th data-field="salary">Coefficient</th>
+                                <th data-field="country">Moyenne</th>
+                                <th data-field="city">Notes</th>
+                                <th data-field="city">Commentaire</th>
                                 
                             </thead>
                             <tbody>
-                                @foreach($bulletins[0]->matieres as $matiere)
+                                @foreach($bulletin2->matieres->sortBy('nomMatiere') as $matiere)
                                 <tr>
                                     <td class="text-left">{{$matiere->nomMatiere}}</td>
                                     <td class="text-left">{{$matiere->pivot->coefGlobal}}</td>
@@ -31,13 +31,11 @@
                                     <td class="text-left">
                                         <div class="row">
                                             <div class="col-md">
-                                                @foreach($matiere->matiereToNotes as $note)
-                                                    <p>{{$note->notes}}</p>
-                                                @endforeach
+                                                <p>{{ \App\Models\note::where(['id' => $matiere->pivot->note_id])->get('notes')[0]->notes }}</p>
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="text-left">{{$matiere->pivot->appreciation}}</td>
+                                    <td class="text-left">{{$matiere->pivot->commentaire}}</td>
                                 </tr>
                                 @endforeach
                                 
@@ -49,6 +47,14 @@
                             </div>
                             <div class="col-md-3">
                                 <p  class="text-left">0</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <p class="text-left">Appreciation General:</p>
+                            </div>
+                            <div class="col-md-3">
+                                <p class="text-left">{{$bulletin2->appreciation}}</p>
                             </div>
                         </div>
                     </div>

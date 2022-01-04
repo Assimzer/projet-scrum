@@ -9,7 +9,7 @@
             <div class="card" style="padding:10px;">
                 <div class="card-body">
                     <p>Ajouter une matière</p>
-                    <form method="post" action="{{ route('Matiere.store') }}">
+                    <form method="post" action="{{ route('matiere.store') }}">
                         @csrf
                         <div class="form-group">
                             <label for="marque">Nom De La Matiere:</label>

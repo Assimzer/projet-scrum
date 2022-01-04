@@ -1,48 +1,54 @@
-@extends('layouts.dashboardLayout')
+@extends('layouts.adminLayout')
 
-@section('title', 'ApprentisRecrutor2000 Bulletin')
-@section('main')
-<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+@section('title', 'ApprentisRecrutor2000 Admin')
+@section('content')
 
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-md-12">
+                        <a href="{{route('bulletin.create')}}"type="button" class="btn btn-md btn-outline-primary">Ajouter un nouveau bulletin</a>
+                    </div>
+                </div>
 
-<table class="table table-bordered table-responsive-lg" style="margin-left: 25%;margin-top: 10%;">
-    <tr>
-        <th>ID</th>
-        <th>Titre</th>
-        <th>Utilisateur</th>
-        <th>Année</th>
-        <th>Actions</th>
-    </tr>
-    @foreach ($bulletinsAll as $bulletin)
-        <tr>
-            <td>{{$bulletin->id}}</td>
-            <td>{{$bulletin->nomBulletin}}</td>
-            <td>{{$bulletin->users->name}}</td>
-            <td>{{$bulletin->created_at}}</td>
-            <td></td>
-            <td>
-                <form action="" method="POST">
-
-                    <a href="" title="show">
-                        <i class="fas fa-eye"></i>
-                    </a>
-
-                    <a href="">
-                        <i class="fas fa-edit"></i>
-                    </a>
-
-                    @csrf
-                    @method('DELETE')
-
-                    <button type="submit" title="delete" style="border: none; background-color:transparent;">
-                        <i class="fas fa-trash"></i>
-                    </button>
-                </form>
-            </td>
-        </tr>
-    @endforeach
-</table>
-<button type="button" class="btn btn-primary">Primary</button>
-<p>kzhjrebfouzeh</p>
+            </div>
+            <div class="card-content table-responsive table-full-width">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="text-center">UUID</th>
+                            <th>Bulletin</th>
+                            <th>Eleve</th>
+                            <th class="text-right">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($bulletins as $bulletin)
+                            <tr>
+                                <td class="text-center">{{$bulletin->bulletin_index}}</td>
+                                <td>{{$bulletin->nomBulletin}}</td>
+                                <td>{{$bulletin->users->name}}</td>
+                                <td class="td-actions text-right">
+                                    <a href="{{ route('bulletin.edit', $bulletin->id)}}" rel="tooltip" title="Edit bulletin" class="btn btn-success btn-simple btn-xs">
+                                    Editer
+                                    </a>
+                                    
+                                    <form action="{{ route('bulletin.destroy', $bulletin->id)}}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-danger btn-simple btn-xs" type="submit">Supprimer</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+</div>
 @endsection

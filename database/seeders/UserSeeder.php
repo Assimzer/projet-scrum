@@ -72,6 +72,18 @@ class UserSeeder extends Seeder
             'option_id' => 1,
             
         ]);
+
+        DB::table('users')->insert([
+            'name'           => 'GENEVOIS',
+            'fristname'           => 'Alain',
+            'email'          => 'alain.genevois@ville-lecreusot.fr',
+            'role_id'          => 3,
+            'password'      => Hash::make('Azerty*1'),
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+            'option_id' => 3,
+            
+        ]);
         
     }
 }

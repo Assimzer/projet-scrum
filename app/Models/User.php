@@ -13,6 +13,7 @@ use App\Models\roles;
 use App\Models\Recevoir;
 use App\Models\offre;
 use App\Models\Option;
+use App\Models\Tuteur;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -27,6 +28,7 @@ class User extends Authenticatable
         'fristname',
         'email',
         'password',
+        'role_id',
         'option_id',
     ];
 
@@ -49,12 +51,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function tuteurs()
+    {
+        return $this->belongsTo(Tuteur::class, 'tuteur_id');
+    }
+
     public function notifications()
     {
         return $this->hasMany(Notification::class, 'notification_id');
     }
 
-    public function bulletins()
+    public function bulletin()
     {
         return $this->hasMany(bulletin::class, 'bulletin_id');
     }
@@ -64,10 +71,6 @@ class User extends Authenticatable
         return $this->belongsTo(roles::class, 'role_id');
     }
 
-    public function recevoirs()
-    {
-        return $this->belongsTo(Recevoir::class, 'recevoir_id');
-    }
     public function offres()
     {
         return $this->hasMany(offre::class, 'offre_id');

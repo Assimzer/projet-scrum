@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Matiere;
-use App\Models\Periode;
+use App\Models\Bulletin;
 
 class note extends Model
 {
@@ -14,13 +14,14 @@ class note extends Model
     protected $table = 'note';
     protected $fillable = ['notes', 'sousSousCoefficient'];
 
-    public function matieres()
+    public function bulletins()
     {
-        return $this->belongsToMany(Matiere::class, 'possede_notes', 'matiere_id', 'note_id');
+        return $this->belongsToMany(Bulletin::class,'composer');
     }
 
-    public function periode()
+    public function noteToMatiere()
     {
-        return $this->belongsTo(Periode::class, 'periode_id');
+        return $this->belongsToMany(Matiere::class,'composer');
     }
+
 }

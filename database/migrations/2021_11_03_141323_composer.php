@@ -22,7 +22,13 @@ class Composer extends Migration
             $table->integer('bulletin_id')->unsigned();
             $table->foreign('bulletin_id')->references('id')->on('bulletins');
 
-            $table->string('appreciation');
+            $table->integer('note_id')->unsigned();
+            $table->foreign('note_id')->references('id')->on('note');
+
+            $table->integer('periode_id')->unsigned();
+            $table->foreign('periode_id')->references('id')->on('periodes');
+
+            $table->string('commentaire');
             $table->string('coefGlobal');
 
             $table->timestamps();

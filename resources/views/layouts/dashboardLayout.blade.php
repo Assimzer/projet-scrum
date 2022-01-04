@@ -167,6 +167,12 @@
 					<script>window.location = "{{ route('GetDashAdmin') }}";</script>
 					<?php exit; ?>
 				@endif
+
+				@if(Auth::user()->roles->profileType == "Professionnel")
+					<script>window.location = "{{ route('GetDashboardProfessionnel') }}";</script>
+					<?php exit; ?>
+				@endif
+
 	    	</div>
 	    </div>
 
@@ -204,7 +210,7 @@
 									</p>
 	                            </a>
 	                            <ul class="dropdown-menu">
-	                                <li><a href="#not1">Notification 1</a></li>
+	                                <li><a href="#not1">{{Auth::user()->roles->profileType}}</a></li>
 	                                <li><a href="#not2">Notification 2</a></li>
 	                                <li><a href="#not3">Notification 3</a></li>
 	                                <li><a href="#not4">Notification 4</a></li>

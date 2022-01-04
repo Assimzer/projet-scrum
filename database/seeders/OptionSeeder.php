@@ -22,5 +22,8 @@ class OptionSeeder extends Seeder
         DB::table('options')->insert([
             'optionNom'      => 'SLAM', 
         ]);
+        DB::table('options')->insert([
+            'optionNom'      => 'PRO', 
+        ]);
     }
 }

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Ressources;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\offre;
+use App\Models\offreType;
+use App\Models\offreLocation;
 use PDF;
 
 class OffreController extends Controller
@@ -16,11 +18,10 @@ class OffreController extends Controller
      */
     public function index()
     {
-        $offreASI = offre::all();
-        $loggedUser = Auth::user();
-        return view('offre',compact('offreASI','loggedUser'));
-       
+        $offres = offre::all();
+        return view('offre.index',compact('offres'));
     }
+
     public function createPDF($id) {
         //retreive all records from db
         $offre = offre::where('id','=',$id)->first();
@@ -37,7 +38,10 @@ class OffreController extends Controller
      */
     public function create()
     {
-        //
+        $offres = offre::all();
+        $offreType = offreType::all();
+        $offreLocation = offreLocation::all();
+        return view('offre.create',compact('offres','offreType','offreLocation'));
     }
 
     /**
@@ -48,7 +52,20 @@ class OffreController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'titre'         => 'required',
+            'description'   => 'required',
+            'resumer'       => 'required',
+            'telephone'     => 'required',
+            'societer'      => 'required',
+            'offreType_id'  => 'required',
+            'offreLocation_id'=> 'required',
+        ]);
+    
+        offre::create($request->all());
+        
+        return redirect()->route('offre.index')
+                        ->with('success','offre created successfully.');
     }
 
     /**
@@ -59,7 +76,10 @@ class OffreController extends Controller
      */
     public function show($id)
     {
-        //
+        $offre = offre::findOrFail($id);
+        $offreType = offreType::all();
+        $offreLocation = offreLocation::all();
+        return view('offre.show',compact('offre','offreType','offreLocation'));
     }
 
     /**
@@ -70,7 +90,10 @@ class OffreController extends Controller
      */
     public function edit($id)
     {
-        //
+        $offre = offre::findOrFail($id);
+        $offreType = offreType::all();
+        $offreLocation = offreLocation::all();
+        return view('offre.edit',compact('offre','offreType','offreLocation'));
     }
 
     /**
@@ -82,7 +105,20 @@ class OffreController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'titre'         => 'required',
+            'description'   => 'required',
+            'resumer'       => 'required',
+            'telephone'     => 'required',
+            'societer'      => 'required',
+            'offreType_id'  => 'required',
+            'offreLocation_id'=> 'required',
+        ]);
+    
+        offre::find($id)->update($request->all());
+    
+        return redirect()->route('offre.index')
+                        ->with('success','offre updated successfully');
     }
 
     /**
@@ -93,6 +129,13 @@ class OffreController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $mat = offre::findOrFail($id);
+        $mat->delete();
+    
+        return redirect()->route('offre.index')
+                        ->with('success','offre deleted successfully');
     }
+    
+
+    
 }

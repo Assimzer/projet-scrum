@@ -45,7 +45,7 @@ class MatiereController extends Controller
     
         Matiere::create($request->all());
      
-        return redirect()->route('Matiere.index')
+        return redirect()->route('matiere.index')
                         ->with('success','Matiere created successfully.');
     }
 
@@ -57,7 +57,7 @@ class MatiereController extends Controller
      */
     public function show(Matiere $matiere)
     {
-        return view('Matiere.show',compact('matiere'));
+        return view('matiere.show',compact('matiere'));
     }
 
     /**
@@ -69,7 +69,7 @@ class MatiereController extends Controller
     public function edit($id)
     {
         $matiere = matiere::findOrFail($id);
-        return view('Matiere.edit',compact('matiere'));
+        return view('matiere.edit',compact('matiere'));
     }
 
     /**
@@ -88,7 +88,7 @@ class MatiereController extends Controller
     
         matiere::find($id)->update($request->all());
     
-        return redirect()->route('Matiere.index')
+        return redirect()->route('matiere.index')
                         ->with('success','Matiere updated successfully');
     }
 
@@ -103,7 +103,7 @@ class MatiereController extends Controller
         $mat = matiere::findOrFail($id);
         $mat->delete();
     
-        return redirect()->route('Matiere.index')
+        return redirect()->route('matiere.index')
                         ->with('success','Matiere deleted successfully');
     }
 }

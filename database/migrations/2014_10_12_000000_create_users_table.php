@@ -21,11 +21,12 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->integer('role_id')->unsigned();
-            $table->foreign('role_id')->references('id')->on('roles');
+            $table->foreign('role_id')->references('id')->on('roles')->default(0);
             $table->integer('option_id')->unsigned();
-            $table->foreign('option_id')->references('id')->on('options');
+            $table->foreign('option_id')->references('id')->on('options')->default(0);
             $table->rememberToken();
-            $table->timestamps();
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
         });
     }
 

@@ -15,12 +15,15 @@ class offre extends Model
 
     protected $table = 'offre';
     protected $fillable = [
+    'offre_uuid',
     'titre',
-    'date',
     'description',
     'resumer',
     'telephone',
-    'ville',
+    'societer',
+    'offreType_id',
+    'offreLocation_id',
+    'posted_by',
     'pdf'];
 
     
@@ -44,6 +47,11 @@ class offre extends Model
     }
     public function postuler_offre(){
         return $this->belongsToMany(PostulerOffre::class);
+    }
+
+    public function postedBy()
+    {
+        return $this->belongsTo(User::class, 'posted_by');
     }
 }
 

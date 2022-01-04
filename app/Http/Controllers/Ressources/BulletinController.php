@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\bulletin;
 use App\Models\Composer;
-use App\Models\matiere;
 use Auth;
 use DB;
 class BulletinController extends Controller
@@ -25,25 +24,13 @@ class BulletinController extends Controller
      */
     public function index()
     {
-
-        //SELECT * FROM `composer` INNER JOIN matiere INNER JOIN bulletin INNER JOIN users WHERE matiere.id = `matiere_id` AND `bulletin_id`=2 AND users.id=2;
-        $bulletins = bulletin::all()->where('user_id', '=', Auth::User()->id);
-        $bulletinsLast = bulletin::latest()->where('user_id', '=', Auth::User()->id)->first();
-        //dd($bulletins[0]->matieres[0]->matiereToNotes);
-        //virer possede type
-        //pivot table de gauche _ tablede droite dans ordre aplha
-        //dd($test->matieres);
-        return view('bulletin',compact('bulletins','bulletinsLast'));
+        //$bulletins = bulletin::all()->where('user_id', '=', Auth::User()->id);
+        //$bulletinsLast = bulletin::latest()->where('user_id', '=', Auth::User()->id)->first();
+        //return view('bulletin',compact('bulletins','bulletinsLast'));
+        $bulletins = bulletin::all();
+        return view('bulletins.index',compact('bulletins'));
     }
     
-    public function IndexAdmin()
-    {
-        $bulletinsAll = bulletin::all();
-        return view('bulletins.index',compact('bulletinsAll'));
-
-        //return view('bulletin',compact('bulletins','bulletinCount'));
-
-    }
     /**
      * Show the form for creating a new resource.
      *
@@ -51,7 +38,8 @@ class BulletinController extends Controller
      */
     public function create()
     {
-        return view('bulletins.create');
+        $bulletins = bulletin::all();
+        return view('bulletin.create',compact('bulletins'));
     }
 
     /**
@@ -62,7 +50,15 @@ class BulletinController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nombulletin' => 'required',
+            'sousCoefficient' => 'required',
+        ]);
+    
+        bulletin::create($request->all());
+     
+        return redirect()->route('bulletin.index')
+                        ->with('success','bulletin created successfully.');
     }
 
     /**
@@ -71,12 +67,9 @@ class BulletinController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($uuid)
+    public function show(bulletin $bulletin)
     {
-        $bulletins = bulletin::where('bulletin_index','=',$uuid)->get();
-        //$appreciation = bulletin::where('bulletin_index','=',$uuid)->get()->pivot->appreciation;
-        //dd($appreciation[0]);
-        return view('bulletins.showbulletin',compact('bulletins'));
+        return view('bulletin.show',compact('bulletin'));
     }
 
     /**
@@ -87,7 +80,8 @@ class BulletinController extends Controller
      */
     public function edit($id)
     {
-        //
+        $bulletin = bulletin::findOrFail($id);
+        return view('bulletin.edit',compact('bulletin'));
     }
 
     /**
@@ -99,7 +93,15 @@ class BulletinController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nombulletin' => 'required',
+            'sousCoefficient' => 'required',
+        ]);
+    
+        bulletin::find($id)->update($request->all());
+    
+        return redirect()->route('bulletin.index')
+                        ->with('success','bulletin updated successfully');
     }
 
     /**
@@ -110,6 +112,10 @@ class BulletinController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $mat = bulletin::findOrFail($id);
+        $mat->delete();
+    
+        return redirect()->route('bulletin.index')
+                        ->with('success','bulletin deleted successfully');
     }
 }

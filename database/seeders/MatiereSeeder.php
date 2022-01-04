@@ -60,5 +60,20 @@ class MatiereSeeder extends Seeder
             'nomMatiere' => 'Projet_tutore',
             'sousCoefficient' => 3,
         ]);
+
+        DB::table('matieres')->insert([
+            'nomMatiere' => 'test_sous_matiere_un',
+            'sousCoefficient' => 1,
+        ]);
+
+        DB::table('matieres')->insert([
+            'nomMatiere' => 'test_sous_matiere_deux',
+            'sousCoefficient' => 3,
+        ]);
+
+        DB::table('matieres')->insert([
+            'nomMatiere' => 'test_sous_matiere_troie',
+            'sousCoefficient' => 3,
+        ]);
     }
 }

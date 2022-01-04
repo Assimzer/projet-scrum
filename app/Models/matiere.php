@@ -8,7 +8,7 @@ use App\Models\Bulletin;
 use App\Models\User;
 use App\Models\note;
 use App\Models\Composer;
-
+use App\Models\SousMatiere;
 class matiere extends Model
 {
     use HasFactory;
@@ -21,9 +21,13 @@ class matiere extends Model
         return $this->belongsToMany(Bulletin::class,'composer');
     }
 
-    public function matiereToNotes()
+    public function matiereToNote()
     {
-        return $this->belongsToMany(note::class, 'possede_notes', 'matiere_id', 'note_id');
+        return $this->belongsToMany(note::class,'composer');
+    }
+
+    public function sousMatiere(){
+        return $this->hasMany(SousMatiere::class,'sous_matiere_id');
     }
 
 }

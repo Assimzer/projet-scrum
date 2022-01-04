@@ -18,7 +18,7 @@
                         </div><br />
                     @endif
                     <p>Modification d'une matière</p>
-                    <form method="post" action="{{ route('Matiere.update', $matiere->id ) }}">
+                    <form method="post" action="{{ route('matiere.update', $matiere->id ) }}">
                     @csrf
                     @method('PATCH')
                         <div class="form-group">
