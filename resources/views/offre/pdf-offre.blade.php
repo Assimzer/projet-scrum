@@ -67,7 +67,7 @@
     
     
     <hr>
-    <p class="title"><strong>profil souhaiter</stong></p>
+    <p class="title"><strong>profil souhaiter</strong></p>
     <hr>  
     <div class="resume">
         <p><strong>Compétences</strong></p> 

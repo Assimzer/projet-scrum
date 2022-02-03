@@ -30,5 +30,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ContienSkillSeeder::class);
         $this->call(SousMatiereSeeder::class);
         $this->call(TuteurSeeder::class);
+        $this->call(FicheSeeder::class);
     }
 }

@@ -180,6 +180,13 @@
                             </a>
                         </li>
 
+						<li>
+                            <a href="{{route('fiche.index')}}">
+								<i class="far fa-file-pdf"></i>
+                                <p>Entretien</p>
+                            </a>
+                        </li>
+
                         <li>
                             <a href="{{route('logout')}}">
                                 <i class="fas fa-sign-out-alt"></i>

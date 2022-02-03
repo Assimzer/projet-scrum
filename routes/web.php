@@ -13,6 +13,7 @@ use App\Http\Controllers\Ressources\TuteurController;
 use App\Http\Controllers\Ressources\NoteController;
 use App\Http\Controllers\Ressources\NotificationController;
 use App\Http\Controllers\Ressources\SousMatiereController;
+use App\Http\Controllers\Ressources\FicheController;
 use App\Http\Middleware\bulletinMiddleware;
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,7 @@ Route::get('/dashboard/Professionnel',[ProfessionnelController::class, 'GetDashb
 Route::get('/dashboard/Professionnel/offres',[ProfessionnelController::class, 'GetOffrePostedBy'])->name('GetOffrePostedBy');
 Route::get('/dashboard/Professionnel/Apprentis/{apprentisID}',[ProfessionnelController::class, 'GetApprentisInformation'])->name('GetApprentisInformation');
 
+
 /*
 |--------------------------------------------------------------------------
 | ADMIN  Routes AXEL ASSIM PAS LE DROIT D'Y TOUCHER
@@ -48,6 +50,7 @@ Route::get('/dashboard/Professionnel/Apprentis/{apprentisID}',[ProfessionnelCont
 Route::get('/Admin/Dashboard',[AdminController::class, 'GetDashboardAdmin'])->name('GetDashAdmin');
 Route::get('/Admin/bulletin',[BulletinController::class, 'IndexAdmin'])->name('showbulletinAdmin');
 Route::get('/dashboard/Offres/pdf/{id}',[OffreController::class, 'createPDF'])->name('createPDF');
+Route::get('/Admin/dashboard/fiche/pdf/{id}', [FicheController::class, 'createEntretienPDF'])->name('ficheByID');
 Route::get('/Admin/dashboard/tuteur/createTuteur',[TuteurController::class, 'createTuteur'])->name('CreateTuteur');
 Route::post('/Admin/dashboard/tuteur/storeCreateTuteur',[TuteurController::class, 'createTuteur'])->name('StoreCreateTuteur');
 
@@ -60,4 +63,5 @@ Route::resource('/Admin/dashboard/eleve', EleveController::class);
 Route::resource('/Admin/dashboard/tuteur', TuteurController::class);
 Route::resource('/Admin/dashboard/note', NoteController::class);
 Route::resource('/Admin/dashboard/notifications', NotificationController::class);
+Route::resource('/Admin/dashboard/fiche', FicheController::class);
 

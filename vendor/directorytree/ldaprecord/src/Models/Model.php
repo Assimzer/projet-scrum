@@ -205,13 +205,37 @@ abstract class Model implements ArrayAccess, Arrayable, JsonSerializable
      *
      * @param string $dn
      *
-     * @return static
+     * @return $this
      */
     public function setDn($dn)
     {
         $this->dn = (string) $dn;
 
         return $this;
+    }
+
+    /**
+     * A mutator for setting the models distinguished name.
+     *
+     * @param string $dn
+     *
+     * @return $this
+     */
+    public function setDnAttribute($dn)
+    {
+        return $this->setRawAttribute('dn', $dn)->setDn($dn);
+    }
+
+    /**
+     * A mutator for setting the models distinguished name.
+     *
+     * @param string $dn
+     *
+     * @return $this
+     */
+    public function setDistinguishedNameAttribute($dn)
+    {
+        return $this->setRawAttribute('distinguishedname', $dn)->setDn($dn);
     }
 
     /**
@@ -274,6 +298,18 @@ abstract class Model implements ArrayAccess, Arrayable, JsonSerializable
     public static function all($attributes = ['*'])
     {
         return static::query()->select($attributes)->paginate();
+    }
+
+    /**
+     * Make a new model instance.
+     *
+     * @param array $attributes
+     *
+     * @return static
+     */
+    public static function make($attributes = [])
+    {
+        return new static($attributes);
     }
 
     /**
@@ -502,6 +538,7 @@ abstract class Model implements ArrayAccess, Arrayable, JsonSerializable
      *
      * @return bool
      */
+    #[\ReturnTypeWillChange]
     public function offsetExists($offset)
     {
         return ! is_null($this->getAttribute($offset));
@@ -514,6 +551,7 @@ abstract class Model implements ArrayAccess, Arrayable, JsonSerializable
      *
      * @return mixed
      */
+    #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
         return $this->getAttribute($offset);
@@ -527,6 +565,7 @@ abstract class Model implements ArrayAccess, Arrayable, JsonSerializable
      *
      * @return void
      */
+    #[\ReturnTypeWillChange]
     public function offsetSet($offset, $value)
     {
         $this->setAttribute($offset, $value);
@@ -539,6 +578,7 @@ abstract class Model implements ArrayAccess, Arrayable, JsonSerializable
      *
      * @return void
      */
+    #[\ReturnTypeWillChange]
     public function offsetUnset($offset)
     {
         unset($this->attributes[$offset]);
@@ -583,6 +623,7 @@ abstract class Model implements ArrayAccess, Arrayable, JsonSerializable
      *
      * @return array
      */
+    #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
         return $this->toArray();

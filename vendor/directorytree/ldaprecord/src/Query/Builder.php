@@ -383,8 +383,8 @@ class Builder
     {
         return str_replace(
             '{base}',
-            $this->baseDn,
-            $dn instanceof Model ? $dn->getDn() : $dn
+            $this->baseDn ?: '',
+            (string) ($dn instanceof Model ? $dn->getDn() : $dn)
         );
     }
 

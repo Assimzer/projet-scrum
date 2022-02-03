@@ -10,13 +10,24 @@ class fiche extends Model
     use HasFactory;
 
     protected $table = 'fiche';
-    protected $fillable = ['demandeurEmploi', 
-    'autreDemandeur', 'formationProjet', 
-    'connaissance', 'motivation', 'niveauScolaire',
-    'experiencePro', 'experienceProText', 'atouts',
-    'difficulteSolution', 'entrepriseTrouver', 'posteConforme',
-    'demarche', 'typeEntreprise', 'secteurGeo', 'bilan', 
-    'amenagement', 'permis', 'vehicule' ];
+    protected $fillable = ['id', 
+    'title', 
+    'description' , 
+    'nomCandidat', 
+    'prenomCandidat', 
+    'email', 
+    'address', 
+    'permis', 
+    'vehicule', 
+    'optionDeSIO', 
+    'entrepriseTrouvee', 
+    'conformeAFormation', 
+    'demarcheRealisee', 
+    'demandeEmploi', 
+    'amenagement', 
+    'adequationFormProjet', 
+    'niveauScolaire',
+    'experiencePro'];
 
     public function entretien()
     {
