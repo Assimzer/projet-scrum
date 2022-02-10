@@ -578,7 +578,7 @@ class Repository implements ArrayAccess, CacheContract
     /**
      * Fire an event for this cache instance.
      *
-     * @param  object|string  $event
+     * @param  string  $event
      * @return void
      */
     protected function event($event)

@@ -63,7 +63,7 @@ class Group extends Entry
      */
     public function getRidAttribute()
     {
-        $objectSidComponents = explode('-', (string) $this->getConvertedSid());
+        $objectSidComponents = explode('-', $this->getConvertedSid());
 
         return [end($objectSidComponents)];
     }

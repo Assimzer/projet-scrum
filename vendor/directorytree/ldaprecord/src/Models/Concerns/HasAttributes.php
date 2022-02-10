@@ -238,28 +238,26 @@ trait HasAttributes
      * Returns the models attribute by its key.
      *
      * @param int|string $key
-     * @param mixed      $default
      *
      * @return mixed
      */
-    public function getAttribute($key, $default = null)
+    public function getAttribute($key)
     {
         if (! $key) {
             return;
         }
 
-        return $this->getAttributeValue($key, $default);
+        return $this->getAttributeValue($key);
     }
 
     /**
      * Get an attributes value.
      *
      * @param string $key
-     * @param mixed  $default
      *
      * @return mixed
      */
-    public function getAttributeValue($key, $default = null)
+    public function getAttributeValue($key)
     {
         $key = $this->normalizeAttributeKey($key);
         $value = $this->getAttributeFromArray($key);
@@ -276,7 +274,7 @@ trait HasAttributes
             return $this->castAttribute($key, $value);
         }
 
-        return is_null($value) ? $default : $value;
+        return $value;
     }
 
     /**
@@ -688,14 +686,13 @@ trait HasAttributes
      * Returns the first attribute by the specified key.
      *
      * @param string $key
-     * @param mixed  $default
      *
      * @return mixed
      */
-    public function getFirstAttribute($key, $default = null)
+    public function getFirstAttribute($key)
     {
         return Arr::first(
-            Arr::wrap($this->getAttribute($key, $default)),
+            Arr::wrap($this->getAttribute($key))
         );
     }
 
@@ -710,10 +707,10 @@ trait HasAttributes
     }
 
     /**
-     * Set an attribute value by the specified key.
+     * Set an attribute value by the specified key and sub-key.
      *
-     * @param string $key
-     * @param mixed  $value
+     * @param mixed $key
+     * @param mixed $value
      *
      * @return $this
      */
@@ -734,23 +731,6 @@ trait HasAttributes
         if ($this->isJsonCastable($key) && ! is_null($value)) {
             $value = $this->castAttributeAsJson($key, $value);
         }
-
-        $this->attributes[$key] = Arr::wrap($value);
-
-        return $this;
-    }
-
-    /**
-     * Set an attribute on the model. No checking is done.
-     *
-     * @param string $key
-     * @param mixed  $value
-     *
-     * @return $this
-     */
-    public function setRawAttribute($key, $value)
-    {
-        $key = $this->normalizeAttributeKey($key);
 
         $this->attributes[$key] = Arr::wrap($value);
 

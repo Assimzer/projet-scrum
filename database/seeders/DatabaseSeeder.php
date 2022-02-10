@@ -31,5 +31,6 @@ class DatabaseSeeder extends Seeder
         $this->call(SousMatiereSeeder::class);
         $this->call(TuteurSeeder::class);
         $this->call(FicheSeeder::class);
+        $this->call(UploadfileSeeder::class);
     }
 }

@@ -78,7 +78,7 @@ class Entry extends BaseEntry implements ActiveDirectory
      */
     public function isDeleted()
     {
-        return strtoupper((string) $this->getFirstAttribute('isDeleted')) === 'TRUE';
+        return strtoupper($this->getFirstAttribute('isDeleted')) === 'TRUE';
     }
 
     /**
@@ -109,9 +109,10 @@ class Entry extends BaseEntry implements ActiveDirectory
             }
         });
 
-        $this->setRawAttribute('distinguishedname', $newDn);
-
-        $this->save(['isDeleted' => null]);
+        $this->save([
+            'isDeleted' => null,
+            'distinguishedName' => $newDn,
+        ]);
     }
 
     /**

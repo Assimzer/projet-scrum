@@ -3,18 +3,19 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\ProfessionnelController;
-use App\Http\Controllers\Ressources\BulletinController;
-use App\Http\Controllers\Ressources\OffreController;
-use App\Http\Controllers\Ressources\PeriodeController;
-use App\Http\Controllers\Ressources\MatiereController;
-use App\Http\Controllers\Ressources\EleveController;
-use App\Http\Controllers\Ressources\TuteurController;
-use App\Http\Controllers\Ressources\NoteController;
-use App\Http\Controllers\Ressources\NotificationController;
-use App\Http\Controllers\Ressources\SousMatiereController;
-use App\Http\Controllers\Ressources\FicheController;
 use App\Http\Middleware\bulletinMiddleware;
+use App\Http\Controllers\FileUploadController;
+use App\Http\Controllers\ProfessionnelController;
+use App\Http\Controllers\Ressources\NoteController;
+use App\Http\Controllers\Ressources\EleveController;
+use App\Http\Controllers\Ressources\FicheController;
+use App\Http\Controllers\Ressources\OffreController;
+use App\Http\Controllers\Ressources\TuteurController;
+use App\Http\Controllers\Ressources\MatiereController;
+use App\Http\Controllers\Ressources\PeriodeController;
+use App\Http\Controllers\Ressources\BulletinController;
+use App\Http\Controllers\Ressources\SousMatiereController;
+use App\Http\Controllers\Ressources\NotificationController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -53,6 +54,10 @@ Route::get('/dashboard/Offres/pdf/{id}',[OffreController::class, 'createPDF'])->
 Route::get('/Admin/dashboard/fiche/pdf/{id}', [FicheController::class, 'createEntretienPDF'])->name('ficheByID');
 Route::get('/Admin/dashboard/tuteur/createTuteur',[TuteurController::class, 'createTuteur'])->name('CreateTuteur');
 Route::post('/Admin/dashboard/tuteur/storeCreateTuteur',[TuteurController::class, 'createTuteur'])->name('StoreCreateTuteur');
+//PDF
+Route::get('file-upload', [FileUploadController::class, 'index'])->name('file.upload');
+Route::post('file-upload', [FileUploadController::class, 'fileUploadPost'])->name('file.upload.post');
+
 
 Route::resource('/Admin/dashboard/matiere', MatiereController::class);
 Route::resource('/Admin/dashboard/sousMatiere', SousMatiereController::class);

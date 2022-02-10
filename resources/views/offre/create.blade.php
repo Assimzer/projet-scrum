@@ -47,8 +47,18 @@
                                 @endforeach
                             </select>
                         </div>
+                            {{-- <button  class="form-control" href="{{route('file.upload')}}">voir upload</button> --}}                 
+                        
 
                         <button type="submit" class="btn btn-primary">Ajouter</button>
+                <form method="post" action="{{ route('offre.store') }}">
+                <div class="col-md-6">
+                    <input type="file"
+                    id="file" name="file"
+                    accept="image/png, image/jpeg file/pdf"
+                    class="form-control">
+                <button type="submit" class="btn btn-primary">Ajouter</button>
+                </div>
                     </form>
                 </div>
             </div>

@@ -12,7 +12,7 @@ class DistinguishedName
     /**
      * The underlying raw value.
      *
-     * @var string
+     * @var string|null
      */
     protected $value;
 
@@ -23,7 +23,7 @@ class DistinguishedName
      */
     public function __construct($value = null)
     {
-        $this->value = trim((string) $value);
+        $this->value = trim($value);
     }
 
     /**

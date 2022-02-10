@@ -8,7 +8,8 @@ use App\Models\offre;
 use App\Models\offreType;
 use App\Models\offreLocation;
 use PDF;
-
+use Auth;
+use Carbon\Carbon;
 class OffreController extends Controller
 {
     /**
@@ -52,6 +53,7 @@ class OffreController extends Controller
      */
     public function store(Request $request)
     {
+    
         $request->validate([
             'titre'         => 'required',
             'description'   => 'required',
@@ -60,10 +62,26 @@ class OffreController extends Controller
             'societer'      => 'required',
             'offreType_id'  => 'required',
             'offreLocation_id'=> 'required',
+            
         ]);
     
-        offre::create($request->all());
-        
+    
+        //offre::create($request->all());
+        $offre = offre::create([
+            'titre'         => $request->input('titre'),
+            'description'   => $request->input('description'),
+            'resumer'       => $request->input('resumer'),
+            'telephone'     => $request->input('telephone'),
+            'societer'      => $request->input('societer'),
+            'offreType_id'  =>$request->input('offreType_id'),
+            'posted_by' => Auth::User()->id,
+            'created_at'    => Carbon::parse()->format('Y-m-d'),
+            'updated_at'    => Carbon::parse()->format('Y-m-d'),
+            'offreLocation_id' => $request->input('offreLocation_id'),
+
+            ]);
+        $offre->save();
+               
         return redirect()->route('offre.index')
                         ->with('success','offre created successfully.');
     }
@@ -113,6 +131,7 @@ class OffreController extends Controller
             'societer'      => 'required',
             'offreType_id'  => 'required',
             'offreLocation_id'=> 'required',
+            
         ]);
     
         offre::find($id)->update($request->all());
@@ -133,9 +152,7 @@ class OffreController extends Controller
         $mat->delete();
     
         return redirect()->route('offre.index')
-                        ->with('success','offre deleted successfully');
+                         -> with('success','offre deleted successfully');
     }
-    
-
-    
+        
 }

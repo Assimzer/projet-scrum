@@ -206,19 +206,6 @@ class LazyCollection implements CanBeEscapedWhenCastToString, Enumerable
     }
 
     /**
-     * Determine if an item is not contained in the enumerable.
-     *
-     * @param  mixed  $key
-     * @param  mixed  $operator
-     * @param  mixed  $value
-     * @return bool
-     */
-    public function doesntContain($key, $operator = null, $value = null)
-    {
-        return ! $this->contains(...func_get_args());
-    }
-
-    /**
      * Cross join the given iterables, returning all possible permutations.
      *
      * @param  array  ...$arrays
@@ -1383,16 +1370,6 @@ class LazyCollection implements CanBeEscapedWhenCastToString, Enumerable
                 yield $key => $value;
             }
         });
-    }
-
-    /**
-     * Convert a flatten "dot" notation array into an expanded array.
-     *
-     * @return static
-     */
-    public function undot()
-    {
-        return $this->passthru('undot', []);
     }
 
     /**
