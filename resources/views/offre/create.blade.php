@@ -8,6 +8,7 @@
         <div class="cardBox">
             <div class="card" style="padding:10px;">
                 <div class="card-body">
+                    <button class="form-group" action="{{ route('addpdf') }}" >inserer un pdf</button>
                     <p>Ajouter une Offre</p>
                     <form method="post" action="{{ route('offre.store') }}">
                         @csrf
@@ -51,15 +52,9 @@
                         
 
                         <button type="submit" class="btn btn-primary">Ajouter</button>
-                <form method="post" action="{{ route('offre.store') }}">
-                <div class="col-md-6">
-                    <input type="file"
-                    id="file" name="file"
-                    accept="image/png, image/jpeg file/pdf"
-                    class="form-control">
-                <button type="submit" class="btn btn-primary">Ajouter</button>
-                </div>
+                        <form method="post" action="{{ route('offre.store') }}">   
                     </form>
+                    
                 </div>
             </div>
         </div>

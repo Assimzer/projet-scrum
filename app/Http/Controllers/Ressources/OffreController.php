@@ -154,5 +154,10 @@ class OffreController extends Controller
         return redirect()->route('offre.index')
                          -> with('success','offre deleted successfully');
     }
+    public function addpdf()
+    {
+        
+        return view('offre.createpdf');
+    }
         
 }

@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Auth;
 use DB;
-Use \Carbon\Carbon;
+
 use App\Models\User;
+Use \Carbon\Carbon;
 use App\Models\offre;
 use App\Models\Option;
-use App\Models\bulletin;
 use App\Models\Periode;
+use App\Models\bulletin;
 use App\Models\offreType;
+use Illuminate\Http\Request;
 use App\Models\offreLocation;
+use Illuminate\Support\Facades\Auth;
+
 class HomeController extends Controller
 {
     /**

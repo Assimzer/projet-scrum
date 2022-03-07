@@ -37,7 +37,7 @@ class FileUploadController extends Controller
     public function store(Request $request)
     {
         
-        Storage::disk('local')->put('pdf', $request->file);
+        Storage::disk('local')->put('public', $request->file);
         die();
         $request->validate([
             'name'=>['required', 'max:255', 'min:5', 'unique:posts', new Uppercase],
@@ -110,6 +110,7 @@ class FileUploadController extends Controller
         'name' => $fileName,
         'path'=> $path,
         ]);
+        
         return back()
         ->with('success','You have successfully upload file.')
         ->with('file',$fileName);

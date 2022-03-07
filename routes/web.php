@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
@@ -54,6 +55,7 @@ Route::get('/dashboard/Offres/pdf/{id}',[OffreController::class, 'createPDF'])->
 Route::get('/Admin/dashboard/fiche/pdf/{id}', [FicheController::class, 'createEntretienPDF'])->name('ficheByID');
 Route::get('/Admin/dashboard/tuteur/createTuteur',[TuteurController::class, 'createTuteur'])->name('CreateTuteur');
 Route::post('/Admin/dashboard/tuteur/storeCreateTuteur',[TuteurController::class, 'createTuteur'])->name('StoreCreateTuteur');
+Route::get('/Admin/dashboard/offre/create/pdf', [OffreController::class, 'addpdf'])->name('addpdf');
 //PDF
 Route::get('file-upload', [FileUploadController::class, 'index'])->name('file.upload');
 Route::post('file-upload', [FileUploadController::class, 'fileUploadPost'])->name('file.upload.post');
@@ -63,6 +65,7 @@ Route::resource('/Admin/dashboard/matiere', MatiereController::class);
 Route::resource('/Admin/dashboard/sousMatiere', SousMatiereController::class);
 Route::resource('/Admin/dashboard/bulletin', BulletinController::class);
 Route::resource('/Admin/dashboard/offre', OffreController::class);
+
 Route::resource('/Admin/dashboard/periode', PeriodeController::class);
 Route::resource('/Admin/dashboard/eleve', EleveController::class);
 Route::resource('/Admin/dashboard/tuteur', TuteurController::class);
