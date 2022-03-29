@@ -56,7 +56,6 @@
                     </form>
                     
                 </div>
-            <button class="form-group"> <a href="{{ route('addpdf') }}"> inserer un pdf</button>
             </div>
         </div>
     </div>
