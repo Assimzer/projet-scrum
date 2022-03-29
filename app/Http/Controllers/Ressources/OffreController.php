@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers\Ressources;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\offre;
-use App\Models\offreType;
-use App\Models\offreLocation;
 use PDF;
 use Auth;
 use Carbon\Carbon;
+use App\Models\offre;
+use App\Models\Filepdf;
+use App\Models\offreType;
+use Illuminate\Http\Request;
+use App\Models\offreLocation;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
+
 class OffreController extends Controller
 {
     /**
@@ -19,8 +22,9 @@ class OffreController extends Controller
      */
     public function index()
     {
+        $filepdfzer = Filepdf::all();
         $offres = offre::all();
-        return view('offre.index',compact('offres'));
+        return view('offre.index',compact('offres', 'filepdfzer'));
     }
 
     public function createPDF($id) {
@@ -39,6 +43,7 @@ class OffreController extends Controller
      */
     public function create()
     {
+        
         $offres = offre::all();
         $offreType = offreType::all();
         $offreLocation = offreLocation::all();
@@ -94,6 +99,7 @@ class OffreController extends Controller
      */
     public function show($id)
     {
+        
         $offre = offre::findOrFail($id);
         $offreType = offreType::all();
         $offreLocation = offreLocation::all();
@@ -154,10 +160,44 @@ class OffreController extends Controller
         return redirect()->route('offre.index')
                          -> with('success','offre deleted successfully');
     }
-    public function addpdf()
+    public function destroypdf($id)
     {
         
+        
+        $mat2 = Filepdf::findOrFail($id);
+        unlink(storage_path(('app\\public\\pdf\\storage\\'.$mat2->name)));
+        $mat2->delete();
+        
+        return redirect()->route('offre.index')
+                         -> with('success','offre deleted successfully');
+    
+    }
+    public function addpdf()
+    {
+
+        ;   
         return view('offre.createpdf');
+    }
+    public function pdf_offre(Request $request)
+    {
+        
+    //check if file exist 
+    $request->validate([
+        'file' => 'required|mimes:pdf|max:2048'
+        ]);
+        $fileModel = new Filepdf;
+        if($request->file()) {
+            $fileName = time().''.$request->file->getClientOriginalName();
+            $filePath = $request->file('file')->storeAs('storage', $fileName, 'public');
+            $fileModel->name = time().''.$request->file->getClientOriginalName();
+            $fileModel->path = $filePath;
+            $fileModel->save();
+           
+            
+    
+             return redirect()->route('offre.index')
+                         ->with('success','offre updated successfully');
+        }
     }
         
 }

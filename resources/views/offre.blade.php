@@ -25,6 +25,18 @@
             </div>
         </div>
     @endforeach
+    @foreach($offrepdf as $opdf)
+    <div class="col-lg-6 col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">{{$opdf->name}}</h4>
+                <p>vous pouvez consulter cette offre ci-dessous en pdf</p>
+            </div>            
+                <a class="btn btn-info btn-fill btn-wd" href="http://localhost/Apprentis_project/public/storage/pdf/{{$opdf->path}}" target="_BLANK">Consulter</a>
+        </div>
+    </div>
+        
+    @endforeach
 </div>
 
 @endsection

@@ -8,6 +8,7 @@ use App\Models\User;
 Use \Carbon\Carbon;
 use App\Models\offre;
 use App\Models\Option;
+use App\Models\Filepdf;
 use App\Models\Periode;
 use App\Models\bulletin;
 use App\Models\offreType;
@@ -59,9 +60,10 @@ class HomeController extends Controller
     }
 
     public function OffrePage(){
+        $offrepdf = Filepdf::all();
         $offreASI = offre::all();
         $bulletins = bulletin::all()->where('user_id', '=', Auth::User()->id);
-        return view('offre',compact('offreASI','bulletins'));
+        return view('offre',compact('offreASI','bulletins', 'offrepdf'));
     }
 
     public function ProfilePage(){

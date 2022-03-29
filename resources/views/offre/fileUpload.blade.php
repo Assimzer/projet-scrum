@@ -34,7 +34,7 @@
             </div>
         @endif
   
-        <form action="{{ route('file.upload.post') }}" method="POST" enctype="multipart/form-data">
+        {{-- <form action="{{ route('file.upload.post') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">
   
@@ -47,7 +47,8 @@
                 </div>
    
             </div>
-        </form>
+        </form> --}}
+        
   
       </div>
     </div>

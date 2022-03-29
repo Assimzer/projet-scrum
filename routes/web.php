@@ -55,7 +55,11 @@ Route::get('/dashboard/Offres/pdf/{id}',[OffreController::class, 'createPDF'])->
 Route::get('/Admin/dashboard/fiche/pdf/{id}', [FicheController::class, 'createEntretienPDF'])->name('ficheByID');
 Route::get('/Admin/dashboard/tuteur/createTuteur',[TuteurController::class, 'createTuteur'])->name('CreateTuteur');
 Route::post('/Admin/dashboard/tuteur/storeCreateTuteur',[TuteurController::class, 'createTuteur'])->name('StoreCreateTuteur');
+//pdf_offre
+Route::post('/Admin/dashboard/offre/create/pdf/upload', [OffreController::class, 'pdf_offre'])->name('pdf_offre');
 Route::get('/Admin/dashboard/offre/create/pdf', [OffreController::class, 'addpdf'])->name('addpdf');
+Route::delete('/Admin/dashboard/offre/create/pdf/delete/{id}', [OffreController::class, 'destroypdf'])->name('destroypdf');
+
 //PDF
 Route::get('file-upload', [FileUploadController::class, 'index'])->name('file.upload');
 Route::post('file-upload', [FileUploadController::class, 'fileUploadPost'])->name('file.upload.post');

@@ -8,7 +8,7 @@
         <div class="cardBox">
             <div class="card" style="padding:10px;">
                 <div class="card-body">
-                    <button class="form-group" action="{{ route('addpdf') }}" >inserer un pdf</button>
+                    
                     <p>Ajouter une Offre</p>
                     <form method="post" action="{{ route('offre.store') }}">
                         @csrf
@@ -56,6 +56,7 @@
                     </form>
                     
                 </div>
+            <button class="form-group"> <a href="{{ route('addpdf') }}"> inserer un pdf</button>
             </div>
         </div>
     </div>

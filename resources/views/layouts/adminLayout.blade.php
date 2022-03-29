@@ -15,6 +15,7 @@
     <!--  CSS for Demo Purpose, don't include it in your project     -->
     <link href="{{url('assets/css/demo.css')}}" rel="stylesheet" />
     <!--  Fonts and icons     -->
+	<link href="https://code.getmdl.io/1.1.3/material.indigo-pink.min.css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
     <link href="{{url('assets/css/themify-icons.css')}}" rel="stylesheet">
@@ -302,7 +303,6 @@
 
 	<!--  Bootstrap Table Plugin    -->
 	<script src="{{url('assets/js/bootstrap-table.js')}}"></script>
-
 	<!--  Plugin for DataTables.net  -->
 	<script src="{{url('assets/js/jquery.datatables.js')}}"></script>
 

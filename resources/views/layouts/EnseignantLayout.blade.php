@@ -7,8 +7,7 @@
 	<title>@yield('title')</title>
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-     <!-- Bootstrap core CSS     -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">     <!-- Bootstrap core CSS     -->
     <link href="{{url('assets/css/bootstrap.min.css')}}" rel="stylesheet" />
     <!--  Paper Dashboard core CSS    -->
     <link href="{{url('assets/css/paper-dashboard.css')}}" rel="stylesheet"/>
@@ -228,7 +227,6 @@
 
 	<!--  Bootstrap Table Plugin    -->
 	<script src="{{url('assets/js/bootstrap-table.js')}}"></script>
-
 	<!--  Plugin for DataTables.net  -->
 	<script src="{{url('assets/js/jquery.datatables.js')}}"></script>
 
